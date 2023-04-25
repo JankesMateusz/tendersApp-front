@@ -1,7 +1,7 @@
 import React from "react";
-import Item from "../Models/TenderItem";
+import TenderItemM from "../Models/TenderItemModel";
 
-const TenderItem: React.FC<{ item: Item }> = (props) => {
+const TenderItem: React.FC<{ item: TenderItemM }> = (props) => {
   return (
     <li>
       <div>

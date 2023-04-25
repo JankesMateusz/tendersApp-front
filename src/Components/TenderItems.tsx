@@ -1,8 +1,8 @@
 import React from "react";
-import Item from "../Models/TenderItem";
+import TenderItemM from "../Models/TenderItemModel";
 import TenderItem from "./TenderItem";
 
-const TenderItems: React.FC<{ items: Item[] }> = (props) => {
+const TenderItems: React.FC<{ items: TenderItemM[] }> = (props) => {
   return (
     <ul>{props.items.map((item) => (
         <TenderItem key={item.id} item={item}/>
