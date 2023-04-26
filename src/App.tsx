@@ -4,8 +4,32 @@ import TenderItemM from "./Models/TenderItemModel";
 import TenderItems from "./Components/TenderItems";
 import TenderM from "./Models/TenderModel";
 import Tender from "./Components/Tender";
+import PurchaserM from "./Models/PurchaserModel";
+import Purchaser from "./Components/Purchaser";
+import PersonOfContactM from "./Models/PersonOfContactModel";
+import PersonOfContact from "./Components/PersonOfContact";
 
 function App() {
+
+  let poc: PersonOfContactM = {
+    id: 1,
+    firstName: "Zenon",
+    lastName: "Martyniuk",
+    email: "zenon@martyniuk.pl",
+    email2: null,
+    phoneNumber: "123-123-123",
+    fax: null
+  }
+
+  let purchaser: PurchaserM = {
+    id: 1,
+    officialName: "Główny Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych",
+    city: "Warszawa",
+    address: "Jakaś ulica 1",
+    province: "mazowieckie",
+    zipCode: "01-100"
+  }
+
   let tender: TenderM = {
     id: 1,
     title:
@@ -48,6 +72,12 @@ function App() {
 
   return (
     <div>
+      <span>
+        <Purchaser purchaser={purchaser}/>
+      </span>
+      <span>
+        <PersonOfContact contact={poc}/>
+      </span>
       <span>
         <Tender tender={tender} />
       </span>
