@@ -6,7 +6,9 @@ import PurchaserM from "../Models/PurchaserModel";
 import Purchaser from "../Components/Purchaser";
 import PersonOfContactM from "../Models/PersonOfContactModel";
 import PersonOfContact from "../Components/PersonOfContact";
-import NewTenderItem from "../Components/NewTenderItem"
+import NewTenderItem from "../Components/NewTenderItem";
+
+import classes from "./TenderEditor.module.css";
 
 const TenderEditor = () => {
   let poc: PersonOfContactM = {
@@ -16,17 +18,18 @@ const TenderEditor = () => {
     email: "zenon@martyniuk.pl",
     email2: null,
     phoneNumber: "123-123-123",
-    fax: null
-  }
+    fax: null,
+  };
 
   let purchaser: PurchaserM = {
     id: 1,
-    officialName: "Główny Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych",
+    officialName:
+      "Główny Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych",
     city: "Warszawa",
     address: "Jakaś ulica 1",
     province: "mazowieckie",
-    zipCode: "01-100"
-  }
+    zipCode: "01-100",
+  };
 
   let tender: TenderM = {
     id: 1,
@@ -70,23 +73,27 @@ const TenderEditor = () => {
 
   return (
     <div>
-      <div>
-        <NewTenderItem/>
-      </div>
-      <span>
-        <Purchaser purchaser={purchaser}/>
-      </span>
-      <span>
-        <PersonOfContact contact={poc}/>
-      </span>
-      <span>
+      <section className={classes.tenderInfo}>
         <Tender tender={tender} />
-      </span>
-      <span>
-        <TenderItems items={items} />
-      </span>
+      </section>
+      <section className={classes.purchaserInfo}>
+        <div className={classes.purchaser}>
+          <Purchaser purchaser={purchaser} />
+        </div>
+        <div className={classes.person}>
+          <PersonOfContact contact={poc} />
+        </div>
+      </section>
+      <section className={classes.tenderItems}>
+        <div className={classes.newItemForm}>
+          <NewTenderItem />
+        </div>
+        <div className={classes.tenderItemsList}>
+          <TenderItems items={items} />
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
 export default TenderEditor;
