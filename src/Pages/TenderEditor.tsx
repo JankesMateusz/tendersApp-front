@@ -6,6 +6,7 @@ import PurchaserM from "../Models/PurchaserModel";
 import Purchaser from "../Components/Purchaser";
 import PersonOfContactM from "../Models/PersonOfContactModel";
 import PersonOfContact from "../Components/PersonOfContact";
+import NewTenderItem from "../Components/NewTenderItem"
 
 const TenderEditor = () => {
   let poc: PersonOfContactM = {
@@ -69,6 +70,9 @@ const TenderEditor = () => {
 
   return (
     <div>
+      <div>
+        <NewTenderItem/>
+      </div>
       <span>
         <Purchaser purchaser={purchaser}/>
       </span>

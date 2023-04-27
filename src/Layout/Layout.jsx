@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Navigation from "./Navigation";
 
-const MainHeader = (props) => {
+const Layout = (props) => {
   return (
     <Fragment>
       <Navigation/>
@@ -10,4 +10,4 @@ const MainHeader = (props) => {
   );
 };
 
-export default MainHeader;
+export default Layout;
