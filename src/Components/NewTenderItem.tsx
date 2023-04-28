@@ -1,45 +1,64 @@
+import classes from "./NewTenderItem.module.css"
+
 const NewTenderItem = () => {
   type Dictionary<T> = {
     [key: string]: T;
   };
 
-  const budgets: Dictionary<string> = {
-    key1: "LESS_THAN_130000_PLN",
-    key2: "LESS_THAN_623504_PLN",
-    key3: "MORE_THAN_623504_PLN",
-    key4: "LESS_THAN_957524_PLN",
-    key5: "MORE_THAN_957524_PLN"
+  const categories: Dictionary<string> = {
+    key1: "NOTEBOOK",
+    key2: "PC",
+    key3: "SERVER",
+    key4: "STORAGE",
+    key5: "MONITOR",
+    key6: "TABLET",
+    key7: "AIO",
+    key8: "PRINTERS",
+    key9: "MFP",
+    key10: "MS_OFFICE",
+    key11: "COPIERS",
+    key12: "SCANNER",
+    key13: "PLOTTER",
+    key14: "PES",
   };
 
   return (
-    <form>
-      <label>Title</label>
-      <input type="text" />
-      <label>Publication Date</label>
-      <input type="date" />
-      <label>Bid Date</label>
-      <input type="date" />
-      <label>Link</label>
-      <input type="text" />
-      <label>Link 2</label>
-      <input type="text" />
-      <label>Link 3</label>
-      <input type="text" />
-      <label>Status</label>
-      <input type="text" />
-      <label>Budget</label>
-      <select name="budget">
-        <option value={budgets.key1}>1</option>
-        <option value={budgets.key2}>2</option>
-        <option value={budgets.key3}>3</option>
-        <option value={budgets.key4}>4</option>
-        <option value={budgets.key5}>5</option>
+    <form className={classes.itemForm}>
+      <label>Category</label>
+      <select name="category">
+        <option value={categories.key1}>Notebook</option>
+        <option value={categories.key2}>PC</option>
+        <option value={categories.key3}>Server</option>
+        <option value={categories.key4}>Storage</option>
+        <option value={categories.key5}>Monitor</option>
+        <option value={categories.key6}>Tablet</option>
+        <option value={categories.key7}>AiO</option>
+        <option value={categories.key8}>Printers</option>
+        <option value={categories.key9}>MFP</option>
+        <option value={categories.key10}>MS Office</option>
+        <option value={categories.key11}>Copiers</option>
+        <option value={categories.key12}>Scanner</option>
+        <option value={categories.key13}>Plotter</option>
+        <option value={categories.key14}>PES</option>
       </select>
-      <label>Comments</label>
+      <label>Quantity</label>
+      <input type="number" />
+      <label>CPU Qty</label>
+      <input type="number" />
+      <label>Architecture</label>
+      <input type="text" />
+      <label>OS</label>
+      <input type="text" />
+      <label>Office</label>
+      <input type="text" />
+      <label>Remarks</label>
+      <input type="text" />
+      <label>Task Nr</label>
+      <input type="number" />
+      <label>Purchase Form</label>
       <input type="text" />
     </form>
   );
 };
 
-
-export default NewTenderItem
+export default NewTenderItem;

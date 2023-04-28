@@ -72,21 +72,35 @@ const TenderEditor = () => {
   ];
 
   return (
-    <div>
-      <section className={classes.tenderInfo}>
-        <Tender tender={tender} />
-      </section>
-      <section className={classes.purchaserInfo}>
-        <div className={classes.purchaser}>
-          <Purchaser purchaser={purchaser} />
+    <div className={classes.container}>
+      <section className={classes.leftSection}>
+        <div className={classes.tenderInfo}>
+          <Tender tender={tender} />
         </div>
-        <div className={classes.person}>
-          <PersonOfContact contact={poc} />
+        <div className={classes.purchaserInfo}>
+          <div className={classes.purchaser}>
+            <Purchaser purchaser={purchaser} />
+          </div>
+          <div className={classes.person}>
+            <PersonOfContact contact={poc} />
+          </div>
         </div>
       </section>
       <section className={classes.tenderItems}>
         <div className={classes.newItemForm}>
           <NewTenderItem />
+        </div>
+        <div className={classes.itemsHeaders}>
+          {/* <p>LP</p> */}
+          <p>Category</p>
+          <p>Quantity</p>
+          <p>CPU qty</p>
+          <p>Architecture</p>
+          <p>OS</p>
+          <p>Office</p>
+          <p>Remarks</p>
+          <p>Task Nr</p>
+          <p>Purchase Form</p>
         </div>
         <div className={classes.tenderItemsList}>
           <TenderItems items={items} />

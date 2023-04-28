@@ -1,6 +1,5 @@
 import "./App.css";
 import Layout from "./Layout/Layout";
-//import { Redirect } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import TenderEditor from "./Pages/TenderEditor";
