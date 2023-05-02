@@ -4,14 +4,14 @@ import TenderM from "../Models/TenderModel";
 const Tender: React.FC<{ tender: TenderM }> = (props) => {
   return (
     <div>
-      <h3>{props.tender.title}</h3>
-      <h3>{props.tender.publicationDate.toLocaleDateString()}</h3>
-      <h3>{props.tender.bidDate.toLocaleDateString()}</h3>
-      <h3>{props.tender.bidNumber}</h3>
-      <h3>{props.tender.link}</h3>
-      <h3>{props.tender.status}</h3>
-      <h3>{props.tender.budget}</h3>
-      <h3>{props.tender.comments}</h3>
+      <p>{props.tender.title}</p>
+      <p>{props.tender.publicationDate.toLocaleDateString()}</p>
+      <p>{props.tender.bidDate.toLocaleDateString()}</p>
+      <p>{props.tender.bidNumber}</p>
+      <p>{props.tender.link}</p>
+      <p>{props.tender.status}</p>
+      <p>{props.tender.budget}</p>
+      <p>{props.tender.comments}</p>
     </div>
   );
 };

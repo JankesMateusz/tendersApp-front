@@ -1,52 +1,48 @@
 .container {
   display: flex;
-  background-color: aqua;
-  margin-top: 0px;
-  border: 2px;
-  border-style: dashed;
-  border-color: crimson;
+  background-color: #c7c7c7;
+  margin: 0;
+  justify-content: space-evenly;
+  align-items: center;
+  /* width: 90%; */
+  height: 755px; /* ??? */
 }
 
 .leftSection {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  margin-left: 2rem;
+  padding: 0;
+  border: #000;
+  border-style: solid;
+  border-width: 2px;
 }
 
 .tenderInfo {
-  border: 2px;
-  border-style: dotted;
-  border-color: darkmagenta;
+
 }
 
 .purchaserInfo {
-  border: 2px;
-  border-style: solid;
-  border-color: coral;
+
 }
 
 .purchaser {
-  border: 2px;
-  border-style: solid;
-  border-color: coral;
+
 }
 
 .person {
-  border: 2px;
-  border-style: solid;
-  border-color: coral;
+
 }
 
 .tenderItems {
-  border: 2px;
+  border: #000;
   border-style: solid;
-  border-color: coral;
+  border-width: 2px;
 }
 
 .tenderItemsList {
-  border: 2px;
-  border-style: solid;
-  border-color: coral;
-  list-style-type: none;
+
 }
 
 .itemsHeaders {
@@ -54,11 +50,10 @@
   flex-direction: row;
   padding: 0;
   margin: 0;
-  /* border: 1px solid #000; */
 }
 
 .itemsHeaders p {
-    border: 1px solid #000;
-    padding: 5px;
-    margin: 0;
+  border: 1px solid #000;
+  padding: 5px;
+  margin: 0;
 }

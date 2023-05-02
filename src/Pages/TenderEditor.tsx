@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+
 import TenderItemM from "../Models/TenderItemModel";
 import TenderItems from "../Components/TenderItems";
 import TenderM from "../Models/TenderModel";
@@ -9,6 +11,7 @@ import PersonOfContact from "../Components/PersonOfContact";
 import NewTenderItem from "../Components/NewTenderItem";
 
 import classes from "./TenderEditor.module.css";
+import TenderItemsContextProvider from "../store/TenderItemsContext";
 
 const TenderEditor = () => {
   let poc: PersonOfContactM = {
@@ -46,7 +49,7 @@ const TenderEditor = () => {
 
   let items: TenderItemM[] = [
     {
-      id: 1,
+      id: "asd123",
       category: "PC",
       quantity: 10,
       cpuQuantity: 10,
@@ -58,7 +61,7 @@ const TenderEditor = () => {
       purchaseForm: "",
     },
     {
-      id: 2,
+      id: "cxz123",
       category: "NTB",
       quantity: 100,
       cpuQuantity: 100,
@@ -87,24 +90,14 @@ const TenderEditor = () => {
         </div>
       </section>
       <section className={classes.tenderItems}>
-        <div className={classes.newItemForm}>
-          <NewTenderItem />
-        </div>
-        <div className={classes.itemsHeaders}>
-          {/* <p>LP</p> */}
-          <p>Category</p>
-          <p>Quantity</p>
-          <p>CPU qty</p>
-          <p>Architecture</p>
-          <p>OS</p>
-          <p>Office</p>
-          <p>Remarks</p>
-          <p>Task Nr</p>
-          <p>Purchase Form</p>
-        </div>
-        <div className={classes.tenderItemsList}>
-          <TenderItems items={items} />
-        </div>
+        <TenderItemsContextProvider>
+          <div className={classes.newItemForm}>
+            <NewTenderItem />
+          </div>
+          <div className={classes.tenderItemsList}>
+            <TenderItems />
+          </div>
+        </TenderItemsContextProvider>
       </section>
     </div>
   );

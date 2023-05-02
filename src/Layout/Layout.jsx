@@ -7,6 +7,7 @@ const Layout = (props) => {
     <Fragment>
       <Navigation/>
       <main className={classes.mainContainer}>{props.children}</main>
+      <footer/>
     </Fragment>
   );
 };
