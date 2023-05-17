@@ -10,9 +10,8 @@ class TenderItemM {
   os: string;
   office: string;
   remarks: string;
-  taskNumber: number | null;
+  taskNumber: number;
   purchaseForm: string;
-
   constructor(
     category: string,
     quantity: number,

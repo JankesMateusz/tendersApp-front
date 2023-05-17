@@ -36,24 +36,8 @@
 }
 
 .tenderItems {
-  border: #000;
-  border-style: solid;
-  border-width: 2px;
-}
-
-.tenderItemsList {
-
-}
-
-.itemsHeaders {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-evenly;
   padding: 0;
-  margin: 0;
-}
-
-.itemsHeaders p {
-  border: 1px solid #000;
-  padding: 5px;
-  margin: 0;
 }

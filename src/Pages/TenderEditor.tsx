@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import TenderItemM from "../Models/TenderItemModel";
 import TenderItems from "../Components/TenderItems";
@@ -8,12 +8,12 @@ import PurchaserM from "../Models/PurchaserModel";
 import Purchaser from "../Components/Purchaser";
 import PersonOfContactM from "../Models/PersonOfContactModel";
 import PersonOfContact from "../Components/PersonOfContact";
-import NewTenderItem from "../Components/NewTenderItem";
-
+import NewTenderItemForm from "../Components/NewTenderItemForm";
 import classes from "./TenderEditor.module.css";
-import TenderItemsContextProvider from "../store/TenderItemsContext";
+import TenderItemStore from "../store/TenderItemStore";
 
-const TenderEditor = () => {
+const TenderEditor: React.FC = () => {
+
   let poc: PersonOfContactM = {
     id: 1,
     firstName: "Zenon",
@@ -74,6 +74,8 @@ const TenderEditor = () => {
     },
   ];
 
+  const store = new TenderItemStore(items);
+
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
@@ -90,14 +92,8 @@ const TenderEditor = () => {
         </div>
       </section>
       <section className={classes.tenderItems}>
-        <TenderItemsContextProvider>
-          <div className={classes.newItemForm}>
-            <NewTenderItem />
-          </div>
-          <div className={classes.tenderItemsList}>
-            <TenderItems />
-          </div>
-        </TenderItemsContextProvider>
+        <NewTenderItemForm store={store}/>
+        <TenderItems store={store}/>
       </section>
     </div>
   );
