@@ -44,6 +44,21 @@ class TenderItemStore {
     }
   }
 
+  duplicateTenderItem(item: TenderItemM){
+    let newItem = new TenderItemM(
+      item.category,
+      item.quantity,
+      item.cpuQuantity,
+      item.architecture,
+      item.os,
+      item.office,
+      item.remarks,
+      item.taskNumber,
+      item.purchaseForm
+    );
+    this.addTenderItem(newItem);
+  }
+
   deleteTenderItem(id: string) {
     const updatedItems = this.items.filter((item) => item.id !== id);
     this.items = updatedItems;

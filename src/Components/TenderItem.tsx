@@ -2,21 +2,34 @@ import React from "react";
 import TenderItemM from "../Models/TenderItemModel";
 import classes from "./TenderItems.module.css"
 
-const TenderItem: React.FC<{ item: TenderItemM}> = (props) => {
+interface TenderItemProps {
+  item: TenderItemM,
+  lp: number,
+  onDelete: (id: string) => void,
+  onEdit: (item: TenderItemM) => void,
+  isHovered: boolean
+}
+
+const TenderItem: React.FC<TenderItemProps> = ({
+  item,
+  lp,
+  onDelete,
+  onEdit,
+  isHovered
+}) => {
   return (
-    <li>
-      <div className={classes.tenderItem}>
-        <p>{props.item.category}</p>
-        <p>{props.item.quantity}</p>
-        <p>{props.item.cpuQuantity}</p>
-        <p>{props.item.architecture}</p>
-        <p>{props.item.os}</p>
-        <p>{props.item.office}</p>
-        <p>{props.item.remarks}</p>
-        <p>{props.item.taskNumber}</p>
-        <p>{props.item.purchaseForm}</p>
-      </div>
-    </li>
+    <tr>
+      <td>{lp}</td>
+      <td>{item.category}</td>
+      <td>{item.quantity}</td>
+      <td>{item.cpuQuantity}</td>
+      <td>{item.architecture}</td>
+      <td>{item.os}</td>
+      <td>{item.office}</td>
+      <td>{item.remarks}</td>
+      <td>{item.taskNumber}</td>
+      <td>{item.purchaseForm}</td>
+    </tr>
   );
 };
 
