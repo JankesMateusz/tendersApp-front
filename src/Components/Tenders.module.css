@@ -18,3 +18,9 @@ td {
   text-align: center;
   padding: 0;
 }
+
+.tab th {
+    background-color: #38015c;
+    font-family: "Lato", sans-serif;
+    color: white;
+  }

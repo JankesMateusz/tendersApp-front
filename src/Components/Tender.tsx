@@ -9,7 +9,9 @@ const Tender: React.FC<{ tender: TenderM }> = (props) => {
       <td>{props.tender.publicationDate.toLocaleDateString()}</td>
       <td>{props.tender.bidDate.toLocaleDateString()}</td>
       <td>{props.tender.bidNumber}</td>
-      <td>{props.tender.link}</td>
+      <td>
+        <a href={props.tender.link} target="_blank" rel="noopener noreferrer">{props.tender.link}</a>
+      </td>
       <td>{props.tender.status}</td>
       <td>{props.tender.budget}</td>
       <td>{props.tender.comments}</td>
