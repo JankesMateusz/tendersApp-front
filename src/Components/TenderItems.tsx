@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./TenderItems.module.css";
 import { observer } from "mobx-react";
 import TenderItemStore from "../store/TenderItemStore";
@@ -6,9 +6,15 @@ import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const TenderItems: React.FC<{ store: TenderItemStore }> = (props) => {
 
+  const [clicked, setClicked] = useState(false);
+
+  const handleClicked = () => {
+    setClicked(!clicked);
+  }
+
   return (
     <div className={classes.tableContainer}>
-      <table>
+      <table className={classes.tab}>
         <thead>
           <tr>
             <th>Lp</th>
@@ -30,8 +36,10 @@ const TenderItems: React.FC<{ store: TenderItemStore }> = (props) => {
               <ContextMenu.Root key={item.id}>
                 <ContextMenu.Trigger asChild>
                   <tr //TODO: move tr to separate component, TenderItem <--------
-                    className={props.store.getEditMode? classes.hihlightedRow : classes.row} //????
+                    className={clicked? classes.hihlightedRow : classes.row} //????
+                    onContextMenu={() => console.log("dupa")}
                     onClick={() => {
+                      handleClicked();
                       props.store.setItemToEdit(item);
                     }}
                   >

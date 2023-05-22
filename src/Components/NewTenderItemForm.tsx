@@ -33,7 +33,6 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
   };
 
   useEffect(() => {
-    console.log(props.store.editMode);
     if (props.store.editMode) {
       setCategory(props.store.toEdit.category);
       setQuantity(props.store.toEdit.quantity);

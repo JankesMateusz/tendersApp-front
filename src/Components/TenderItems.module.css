@@ -2,12 +2,12 @@
   margin-top: 20px;
 }
 
-table{
+.tab {
   border-collapse: collapse;
   background-color: white;
 }
 
-th,
+.tab th,
 td {
   border: 1px;
   border-color: #000000e7;
@@ -16,29 +16,30 @@ td {
   margin: 0;
 }
 
-tbody,
+.tab tbody,
 .row {
   text-align: center;
   padding: 0;
+  transition-duration: 0.5s;
 }
 
-th {
+.tab th {
   background-color: #38015c;
   font-family: "Lato", sans-serif;
   color: white;
 }
 
-thead :hover {
+.tab thead :hover {
   color: #c291e2;
   background-color: #290044;
   cursor: pointer;
 }
 
-.row:hover{
+.row:hover {
   background-color: #dadada;
 }
 
-.highlightedRow{
+.highlightedRow {
   background-color: #dadada;
 }
 
