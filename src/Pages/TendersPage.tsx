@@ -1,12 +1,13 @@
 import TenderPageOptions from "../Components/TenderPageOptions";
 import Tenders from "../Components/Tenders";
 import TenderM from "../Models/TenderModel";
-import classes from "./TendersPage.module.css";
+import classes from "../style/TendersPage.module.css";
 
 const TendersPage = () => {
   let tenders: TenderM[] = [
     {
       id: 1,
+      mdpId: "2023001",
       title:
         "Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych",
       publicationDate: new Date(2023, 1, 10),
@@ -19,6 +20,7 @@ const TendersPage = () => {
     },
     {
       id: 2,
+      mdpId: "2023002",
       title:
         "Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych",
       publicationDate: new Date(2023, 1, 10),
@@ -31,6 +33,7 @@ const TendersPage = () => {
     },
     {
       id: 3,
+      mdpId: "2023003",
       title:
         "Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-SpożywczychDostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych",
       publicationDate: new Date(2023, 1, 10),

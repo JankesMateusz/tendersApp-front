@@ -1,16 +1,20 @@
 import React from "react";
-import classes from "./TenderPageOptions.module.css";
+import classes from "../style/TenderPageOptions.module.css";
+import { Search } from "@material-ui/icons";
 
 const TenderPageOptions = () => {
   return (
     <div className={classes.container}>
-      <div className={classes.searchBar}>
+      <div className={classes.searchSection}>
         <select>
           <option>Title</option>
           <option>Purchaser</option>
           <option>Tender ID</option>
         </select>
-        <input placeholder="search..." />
+        <div className={classes.searchBar}>
+          <input placeholder="search..." />
+          <Search style={{backgroundColor: "white", color: "grey", fontSize: "16px"}}/>
+        </div>
       </div>
       <div className={classes.datePicker}>
         <input type="date" />

@@ -1,6 +1,6 @@
 import React from "react";
 import TenderItemM from "../Models/TenderItemModel";
-import classes from "./TenderItems.module.css"
+import classes from "../TenderItems.module.css"
 
 interface TenderItemProps {
   item: TenderItemM,
@@ -12,10 +12,7 @@ interface TenderItemProps {
 
 const TenderItem: React.FC<TenderItemProps> = ({
   item,
-  lp,
-  onDelete,
-  onEdit,
-  isHovered
+  lp
 }) => {
   return (
     <tr>

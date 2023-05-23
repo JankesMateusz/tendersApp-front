@@ -1,5 +1,6 @@
 class TenderM {
   id: number;
+  mdpId: string;
   title: string;
   publicationDate: Date;
   bidDate: Date;
@@ -11,6 +12,7 @@ class TenderM {
 
   constructor(
     id: number,
+    mdpId: string,
     title: string,
     publicationDate: Date,
     bidDate: Date,
@@ -21,6 +23,7 @@ class TenderM {
     comments: string
   ) {
     this.id = id;
+    this.mdpId = mdpId;
     this.title = title;
     this.publicationDate = publicationDate;
     this.bidDate = bidDate;

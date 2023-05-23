@@ -1,7 +1,8 @@
 .tab{
     background-color: rgb(218, 218, 218);
     border-collapse: collapse;
-    border-radius: 7px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .tab th,

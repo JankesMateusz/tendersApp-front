@@ -4,7 +4,32 @@ import TenderItemM from "../Models/TenderItemModel";
 class TenderItemStore {
   //handles adding new item form and items list
 
-  items: TenderItemM[];
+  items: TenderItemM[] = [
+    {
+      id: "asd123",
+      category: "PC",
+      quantity: 10,
+      cpuQuantity: 10,
+      architecture: "Intel Core i5",
+      os: "Windows 10",
+      office: "Office 2021",
+      remarks: "dupa",
+      taskNumber: 1,
+      purchaseForm: "",
+    },
+    {
+      id: "cxz123",
+      category: "NTB",
+      quantity: 100,
+      cpuQuantity: 100,
+      architecture: "Intel Core i7",
+      os: "Windows 11",
+      office: "Office 2021",
+      remarks: "dupa2",
+      taskNumber: 2,
+      purchaseForm: "",
+    },
+  ];
   toEdit: TenderItemM = {
     id: "",
     category: "",
@@ -19,8 +44,7 @@ class TenderItemStore {
   };
   editMode: boolean = false;
 
-  constructor(initItems: TenderItemM[]) {
-    this.items = initItems;
+  constructor() {
     makeObservable(this, {
       items: observable,
       toEdit: observable,
@@ -29,7 +53,7 @@ class TenderItemStore {
       setItemToEdit: action,
       deleteTenderItem: action,
       toggleEditMode: action,
-      overwriteItem: action
+      overwriteItem: action,
     });
   }
 
@@ -37,14 +61,14 @@ class TenderItemStore {
     this.items.push(item);
   }
 
-  overwriteItem(item: TenderItemM, newItem: TenderItemM){
+  overwriteItem(item: TenderItemM, newItem: TenderItemM) {
     const index = this.items.indexOf(item);
-    if(index !== -1){
+    if (index !== -1) {
       this.items[index] = newItem;
     }
   }
 
-  duplicateTenderItem(item: TenderItemM){
+  duplicateTenderItem(item: TenderItemM) {
     let newItem = new TenderItemM(
       item.category,
       item.quantity,
@@ -69,7 +93,7 @@ class TenderItemStore {
       this.toggleEditMode();
       this.toEdit = item;
     }
-    return
+    return;
   }
 
   get getItemToEdit() {
@@ -85,4 +109,6 @@ class TenderItemStore {
   }
 }
 
-export default TenderItemStore;
+const itemStore = new TenderItemStore();
+
+export default itemStore;

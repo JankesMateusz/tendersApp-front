@@ -1,0 +1,15 @@
+.container {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    border: 1px rgb(172, 172, 172) solid;
+
+}
+
+.itemForm {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    height: 100%;
+}

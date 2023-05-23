@@ -1,10 +1,10 @@
-import classes from "./NewTenderItem.module.css";
+import classes from "../style/NewTenderItem.module.css";
 import React, { useEffect, useState } from "react";
 import TenderItemM from "../Models/TenderItemModel";
-import TenderItemStore from "../store/TenderItemStore";
+import itemStore from "../store/TenderItemStore";
 import { observer } from "mobx-react";
 
-const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
+const NewTenderItemForm: React.FC = () => {
   const INITIAL_VALUES: TenderItemM = {
     id: "",
     category: "",
@@ -33,18 +33,18 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
   };
 
   useEffect(() => {
-    if (props.store.editMode) {
-      setCategory(props.store.toEdit.category);
-      setQuantity(props.store.toEdit.quantity);
-      setCpuQuantity(props.store.toEdit.cpuQuantity);
-      setArchitecture(props.store.toEdit.architecture);
-      setOs(props.store.toEdit.os);
-      setOffice(props.store.toEdit.office);
-      setRemarks(props.store.toEdit.remarks);
-      setTaskNumber(props.store.toEdit.taskNumber);
-      setPurchaseForm(props.store.toEdit.purchaseForm);
+    if (itemStore.editMode) {
+      setCategory(itemStore.toEdit.category);
+      setQuantity(itemStore.toEdit.quantity);
+      setCpuQuantity(itemStore.toEdit.cpuQuantity);
+      setArchitecture(itemStore.toEdit.architecture);
+      setOs(itemStore.toEdit.os);
+      setOffice(itemStore.toEdit.office);
+      setRemarks(itemStore.toEdit.remarks);
+      setTaskNumber(itemStore.toEdit.taskNumber);
+      setPurchaseForm(itemStore.toEdit.purchaseForm);
     }
-  }, [props.store.editMode, props.store.toEdit]);
+  }, [itemStore.editMode, itemStore.toEdit]);
 
   const categories: Dictionary<string> = {
     key1: "NTB",
@@ -82,13 +82,13 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
       taskNumber,
       purchaseForm
     );
-    props.store.addTenderItem(newItem);
+    itemStore.addTenderItem(newItem);
 
     resetToInitValues();
   };
 
   const handleCancel = () => {
-    props.store.toggleEditMode();
+    itemStore.toggleEditMode();
     resetToInitValues();
   };
 
@@ -117,12 +117,12 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
       purchaseForm
     );
 
-    props.store.overwriteItem(props.store.toEdit, newItem);
+    itemStore.overwriteItem(itemStore.toEdit, newItem);
     handleCancel();
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <form className={classes.itemForm} onSubmit={handleSubmit}>
         <label>Category</label>
         <select
@@ -148,7 +148,7 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
         </select>
         <label>Quantity</label>
         <input
-          value={quantity}
+          value={quantity !== 0 ? quantity : ""}
           type="number"
           onChange={(event) => setQuantity(event.target.valueAsNumber)}
         />
@@ -202,7 +202,7 @@ const NewTenderItemForm: React.FC<{ store: TenderItemStore }> = (props) => {
           onChange={(event) => setPurchaseForm(event.target.value)}
         />
       </form>
-      {props.store.editMode ? (
+      {itemStore.editMode ? (
         <div>
           <button onClick={handleItemOverwrite}>Save</button>
           <button onClick={handleCancel}>Cancel</button>

@@ -1,10 +1,10 @@
 import React from "react";
 import TenderM from "../Models/TenderModel";
-import classes from "./Tender.module.css";
 
 const Tender: React.FC<{ tender: TenderM }> = (props) => {
   return (
     <tr>
+      <td>{props.tender.mdpId}</td>
       <td>{props.tender.title}</td>
       <td>{props.tender.publicationDate.toLocaleDateString()}</td>
       <td>{props.tender.bidDate.toLocaleDateString()}</td>

@@ -1,19 +1,16 @@
 import React from "react";
 
-import TenderItemM from "../Models/TenderItemModel";
 import TenderItems from "../Components/TenderItems";
 import TenderM from "../Models/TenderModel";
-import Tender from "../Components/Tender";
 import PurchaserM from "../Models/PurchaserModel";
 import Purchaser from "../Components/Purchaser";
 import PersonOfContactM from "../Models/PersonOfContactModel";
 import PersonOfContact from "../Components/PersonOfContact";
 import NewTenderItemForm from "../Components/NewTenderItemForm";
-import classes from "./TenderEditor.module.css";
-import TenderItemStore from "../store/TenderItemStore";
+import classes from "../style/TenderEditor.module.css";
+import TenderInfo from "../Components/TenderInfo";
 
 const TenderEditor: React.FC = () => {
-
   let poc: PersonOfContactM = {
     id: 1,
     firstName: "Zenon",
@@ -36,6 +33,7 @@ const TenderEditor: React.FC = () => {
 
   let tender: TenderM = {
     id: 1,
+    mdpId: "2023001",
     title:
       "Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych",
     publicationDate: new Date(2023, 1, 10),
@@ -47,40 +45,12 @@ const TenderEditor: React.FC = () => {
     comments: null,
   };
 
-  let items: TenderItemM[] = [
-    {
-      id: "asd123",
-      category: "PC",
-      quantity: 10,
-      cpuQuantity: 10,
-      architecture: "Intel Core i5",
-      os: "Windows 10",
-      office: "Office 2021",
-      remarks: "dupa",
-      taskNumber: 1,
-      purchaseForm: "",
-    },
-    {
-      id: "cxz123",
-      category: "NTB",
-      quantity: 100,
-      cpuQuantity: 100,
-      architecture: "Intel Core i7",
-      os: "Windows 11",
-      office: "Office 2021",
-      remarks: "dupa2",
-      taskNumber: 2,
-      purchaseForm: "",
-    },
-  ];
-
-  const store = new TenderItemStore(items);
-
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
         <div className={classes.tenderInfo}>
-          <Tender tender={tender} />
+          <label>Tender Information</label>
+          <TenderInfo tender={tender} />
         </div>
         <div className={classes.purchaserInfo}>
           <div className={classes.purchaser}>
@@ -91,9 +61,10 @@ const TenderEditor: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className={classes.tenderItems}>
-        <NewTenderItemForm store={store}/>
-        <TenderItems store={store}/>
+      <section className={classes.rightSection}>
+        <label>Tender Items</label>
+        <NewTenderItemForm />
+        <TenderItems />
       </section>
     </div>
   );
