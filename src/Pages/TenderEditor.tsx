@@ -42,21 +42,23 @@ const TenderEditor: React.FC = () => {
     bidNumber: "2023/BZP 00192198/01",
     status: "pending",
     budget: "powyżej 623504 PLN",
-    comments: null,
+    comments: "",
   };
 
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
+        <label>Tender Information</label>
         <div className={classes.tenderInfo}>
-          <label>Tender Information</label>
           <TenderInfo tender={tender} />
         </div>
         <div className={classes.purchaserInfo}>
           <div className={classes.purchaser}>
+            <label>Puchaser Information</label>
             <Purchaser purchaser={purchaser} />
           </div>
           <div className={classes.person}>
+            <label>Person In Contact Information</label>
             <PersonOfContact contact={poc} />
           </div>
         </div>

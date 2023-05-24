@@ -151,6 +151,7 @@ const NewTenderItemForm: React.FC = () => {
           value={quantity !== 0 ? quantity : ""}
           type="number"
           onChange={(event) => setQuantity(event.target.valueAsNumber)}
+          min={0}
         />
         <label>CPU Qty</label>
         <input
@@ -158,6 +159,7 @@ const NewTenderItemForm: React.FC = () => {
           value={cpuQuantity !== 0 ? cpuQuantity : ""}
           type="number"
           onChange={(event) => setCpuQuantity(event.target.valueAsNumber)}
+          min={0}
         />
         <label>Architecture</label>
         <input
@@ -193,6 +195,7 @@ const NewTenderItemForm: React.FC = () => {
           value={taskNumber !== 0 ? taskNumber : ""}
           type="number"
           onChange={(event) => setTaskNumber(event.target.valueAsNumber)}
+          min={0}
         />
         <label>Purchase Form</label>
         <input

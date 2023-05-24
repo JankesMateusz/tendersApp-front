@@ -16,7 +16,7 @@ const TendersPage = () => {
       bidNumber: "2023/BZP 00192198/01",
       status: "pending",
       budget: "powyżej 623504 PLN",
-      comments: null,
+      comments: "",
     },
     {
       id: 2,

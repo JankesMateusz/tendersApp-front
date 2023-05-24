@@ -8,7 +8,7 @@ class TenderM {
   bidNumber: string;
   status: string;
   budget: string;
-  comments: string | null;
+  comments: string;
 
   constructor(
     id: number,
