@@ -48,17 +48,17 @@ const TenderEditor: React.FC = () => {
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
-        <label>Tender Information</label>
+        <label className={classes.label}>Tender Information</label>
         <div className={classes.tenderInfo}>
           <TenderInfo tender={tender} />
         </div>
+        <label className={classes.label}>Puchaser Information</label>
         <div className={classes.purchaserInfo}>
           <div className={classes.purchaser}>
-            <label>Puchaser Information</label>
             <Purchaser purchaser={purchaser} />
           </div>
+          <label className={classes.label}>Person In Contact Information</label>
           <div className={classes.person}>
-            <label>Person In Contact Information</label>
             <PersonOfContact contact={poc} />
           </div>
         </div>

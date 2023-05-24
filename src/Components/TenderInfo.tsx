@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TenderM from "../Models/TenderModel";
-import DatePicker from "react-datepicker"
 import classes from "../style/TenderInfo.module.css";
 
 const TenderInfo: React.FC<{ tender: TenderM }> = (props) => {
@@ -8,7 +7,7 @@ const TenderInfo: React.FC<{ tender: TenderM }> = (props) => {
   return (
     <div className={classes.container}>
       <label className={classes.label}>MDP ID: {props.tender.mdpId}</label>
-      <input type="text" value={props.tender.title} className={classes.input}/>
+      <textarea value={props.tender.title} draggable={false} className={classes.title}/>
       <div className={classes.datePicker}>
         <label>{props.tender.publicationDate.toLocaleDateString()}</label>
         <input type="date" />

@@ -1,17 +1,18 @@
 import React from "react";
 import PersonOfContactM from "../Models/PersonOfContactModel";
+import classes from "../style/PersonOfContact.module.css";
 
-const PersonOfContact: React.FC<{contact: PersonOfContactM}> = (props) => {
-    return (
-        <div>
-            <p>{props.contact.firstName}</p>
-            <p>{props.contact.lastName}</p>
-            <p>{props.contact.email}</p>
-            <p>{props.contact.email2}</p>
-            <p>{props.contact.phoneNumber}</p>
-            <p>{props.contact.fax}</p>
-        </div>
-    )
-}
+const PersonOfContact: React.FC<{ contact: PersonOfContactM }> = (props) => {
+  return (
+    <div className={classes.container}>
+      <label>{props.contact.firstName}</label>
+      <label>{props.contact.lastName}</label>
+      <label>{props.contact.email}</label>
+      <label>{props.contact.email2}</label>
+      <label>{props.contact.phoneNumber}</label>
+      <label>{props.contact.fax}</label>
+    </div>
+  );
+};
 
 export default PersonOfContact;
