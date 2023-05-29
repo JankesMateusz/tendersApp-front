@@ -1,8 +1,15 @@
-.tab{
-    background-color: rgb(218, 218, 218);
-    border-collapse: collapse;
-    margin-left: 3px;
-    margin-right: 3px;
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.tab {
+  width: 100%;
+  background-color: rgb(218, 218, 218);
+  border-collapse: collapse;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .tab th,
@@ -21,7 +28,7 @@ td {
 }
 
 .tab th {
-    background-color: #38015c;
-    font-family: "Lato", sans-serif;
-    color: white;
-  }
+  background-color: #38015c;
+  font-family: "Lato", sans-serif;
+  color: white;
+}

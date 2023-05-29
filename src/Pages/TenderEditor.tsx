@@ -9,8 +9,21 @@ import PersonOfContact from "../Components/PersonOfContact";
 import NewTenderItemForm from "../Components/NewTenderItemForm";
 import classes from "../style/TenderEditor.module.css";
 import TenderInfo from "../Components/TenderInfo";
+import { useParams } from "react-router-dom";
+import useFetch from "../util/useFetch";
+import itemStore from "../store/TenderItemStore";
 
 const TenderEditor: React.FC = () => {
+  const url = "http://localhost:8080/tenders/";
+  const mdpId = useParams().id;
+
+  const {data, loading, error} = useFetch(`${url}${mdpId}`);
+
+  if(data !== null){
+    itemStore.setItems(data.tenderItemsDto);
+    console.log(data.purchaserDto)
+  }
+
   let poc: PersonOfContactM = {
     id: 1,
     firstName: "Zenon",
@@ -45,9 +58,26 @@ const TenderEditor: React.FC = () => {
     comments: "",
   };
 
+  if(data !== null){
+    poc = data.purchaserDto;
+  }
+  if(data !== null){
+    purchaser = data.purchaserDto;
+  }
+  if(data !== null){
+    tender = data.tenderDto;
+  }
+
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
+        <div className={classes.menu}>
+          <button>L</button>
+          <button>Save</button>
+          <label>MDP ID HERE?</label>
+          <button>New Tender</button>
+          <button>R</button>
+        </div>
         <label className={classes.label}>Tender Information</label>
         <div className={classes.tenderInfo}>
           <TenderInfo tender={tender} />

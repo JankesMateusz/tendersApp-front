@@ -4,32 +4,8 @@ import TenderItemM from "../Models/TenderItemModel";
 class TenderItemStore {
   //handles adding new item form and items list
 
-  items: TenderItemM[] = [
-    {
-      id: "asd123",
-      category: "PC",
-      quantity: 10,
-      cpuQuantity: 10,
-      architecture: "Intel Core i5",
-      os: "Windows 10",
-      office: "Office 2021",
-      remarks: "dupa",
-      taskNumber: 1,
-      purchaseForm: "",
-    },
-    {
-      id: "cxz123",
-      category: "NTB",
-      quantity: 100,
-      cpuQuantity: 100,
-      architecture: "Intel Core i7",
-      os: "Windows 11",
-      office: "Office 2021",
-      remarks: "dupa2",
-      taskNumber: 2,
-      purchaseForm: "",
-    },
-  ];
+  items: TenderItemM[] = [];
+
   toEdit: TenderItemM = {
     id: "",
     category: "",
@@ -106,6 +82,10 @@ class TenderItemStore {
 
   get getEditMode() {
     return this.editMode;
+  }
+
+  setItems(items:TenderItemM[]){
+    this.items = items;
   }
 }
 

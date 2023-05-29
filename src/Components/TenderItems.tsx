@@ -40,8 +40,7 @@ const TenderItems: React.FC = () => {
                         <tr //TODO: move tr to separate component, TenderItem <--------
                           className={
                             clicked ? classes.hihlightedRow : classes.row
-                          } //????
-                          onContextMenu={() => console.log("dupa")}
+                          }
                           onClick={() => {
                             handleClicked();
                             itemStore.setItemToEdit(item);

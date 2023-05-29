@@ -2,8 +2,8 @@ class TenderM {
   id: number;
   mdpId: string;
   title: string;
-  publicationDate: Date;
-  bidDate: Date;
+  publicationDate: Date | string;
+  bidDate: Date | string;
   link: string;
   bidNumber: string;
   status: string;
@@ -14,8 +14,8 @@ class TenderM {
     id: number,
     mdpId: string,
     title: string,
-    publicationDate: Date,
-    bidDate: Date,
+    publicationDate: Date | string,
+    bidDate: Date | string,
     link: string,
     bidNumber: string,
     status: string,

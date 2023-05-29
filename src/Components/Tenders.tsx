@@ -2,10 +2,11 @@ import React from "react";
 import TenderM from "../Models/TenderModel";
 import Tender from "./Tender";
 import classes from "../style/Tenders.module.css";
+import { NavLink } from "react-router-dom";
 
 const Tenders: React.FC<{ tenderList: TenderM[] }> = (props) => {
   return (
-    <div>
+    <div className={classes.container}>
       <table className={classes.tab}>
         <thead>
           <tr>
@@ -22,7 +23,7 @@ const Tenders: React.FC<{ tenderList: TenderM[] }> = (props) => {
         </thead>
         <tbody>
           {props.tenderList.map((item) => {
-            return <Tender tender={item} />;
+            return <Tender key={item.id} tender={item} />;
           })}
         </tbody>
       </table>

@@ -7,13 +7,15 @@ const TenderInfo: React.FC<{ tender: TenderM }> = (props) => {
   return (
     <div className={classes.container}>
       <label className={classes.label}>MDP ID: {props.tender.mdpId}</label>
-      <textarea value={props.tender.title} draggable={false} className={classes.title}/>
+      <textarea placeholder="Title..." value={props.tender.title}  className={classes.title}/>
+      <label>Publication Date</label>
       <div className={classes.datePicker}>
-        <label>{props.tender.publicationDate.toLocaleDateString()}</label>
+        <label>{props.tender.publicationDate.toLocaleString()}</label>
         <input type="date" />
       </div>
+      <label>Bid Date</label>
       <div className={classes.datePicker}>
-        <label>{props.tender.bidDate.toLocaleDateString()}</label>
+        <label>{props.tender.bidDate.toLocaleString()}</label>
         <input type="date" />
       </div>
       <input type="text" value={props.tender.bidNumber} className={classes.input}/>
