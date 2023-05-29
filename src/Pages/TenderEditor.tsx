@@ -9,20 +9,24 @@ import PersonOfContact from "../Components/PersonOfContact";
 import NewTenderItemForm from "../Components/NewTenderItemForm";
 import classes from "../style/TenderEditor.module.css";
 import TenderInfo from "../Components/TenderInfo";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../util/useFetch";
 import itemStore from "../store/TenderItemStore";
+import TenderItemM from "../Models/TenderItemModel";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 
 const TenderEditor: React.FC = () => {
   const url = "http://localhost:8080/tenders/";
-  const mdpId = useParams().id;
+  const mdpId = useParams().mdpId;
+  const { data, loading, error } = useFetch(`${url}${mdpId}`);
+  const navigate = useNavigate();
 
-  const {data, loading, error} = useFetch(`${url}${mdpId}`);
+  let initialItems: TenderItemM[] = [];
 
-  if(data !== null){
-    itemStore.setItems(data.tenderItemsDto);
-    console.log(data.purchaserDto)
+  if (data !== null) {
+    initialItems = data.tenderItemsDto;
   }
+  itemStore.setItems(initialItems);
 
   let poc: PersonOfContactM = {
     id: 1,
@@ -58,43 +62,61 @@ const TenderEditor: React.FC = () => {
     comments: "",
   };
 
-  if(data !== null){
+  if (data !== null) {
     poc = data.purchaserDto;
   }
-  if(data !== null){
+  if (data !== null) {
     purchaser = data.purchaserDto;
   }
-  if(data !== null){
+  if (data !== null) {
     tender = data.tenderDto;
   }
+
+  const handleClickLeft = () => {
+    const result = (parseInt(mdpId ? mdpId : "", 10) - 1).toString();
+    navigate(`/tender/${result}`);
+  };
+
+  const handleClickRight = () => {
+    const result = (parseInt(mdpId ? mdpId : "", 10) + 1).toString();
+    navigate(`/tender/${result}`);
+  };
+
+  const handleNewTender = () => {
+    navigate(`/tender/newTender`);
+  };
 
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
+        <label className={classes.sectionName}>Tender Information</label>
         <div className={classes.menu}>
-          <button>L</button>
+          <div className={classes.arrowArea} onClick={handleClickLeft}>
+            <ArrowBack className={classes.arrow} />
+          </div>
           <button>Save</button>
           <label>MDP ID HERE?</label>
-          <button>New Tender</button>
-          <button>R</button>
+          <button onClick={handleNewTender}>New Tender</button>
+          <div className={classes.arrowArea} onClick={handleClickRight}>
+            <ArrowForward className={classes.arrow} />
+          </div>
         </div>
-        <label className={classes.label}>Tender Information</label>
         <div className={classes.tenderInfo}>
           <TenderInfo tender={tender} />
         </div>
-        <label className={classes.label}>Puchaser Information</label>
+        <label className={classes.sectionName}>Puchaser Information</label>
         <div className={classes.purchaserInfo}>
           <div className={classes.purchaser}>
             <Purchaser purchaser={purchaser} />
           </div>
-          <label className={classes.label}>Person In Contact Information</label>
+          <label className={classes.sectionName}>Person In Contact Information</label>
           <div className={classes.person}>
             <PersonOfContact contact={poc} />
           </div>
         </div>
       </section>
       <section className={classes.rightSection}>
-        <label>Tender Items</label>
+        <label className={classes.sectionName}>Tender Items</label>
         <NewTenderItemForm />
         <TenderItems />
       </section>

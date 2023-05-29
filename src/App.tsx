@@ -2,7 +2,7 @@ import Layout from "./Layout/Layout";
 import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import TenderEditor from "./Pages/TenderEditor";
-import TendersPage from "./Pages/TendersPage";
+import TendersPage from "./Pages/TendersPage"
 import path from "path";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       children: [
         { path: "/tenders", element: <TendersPage /> },
         {
-          path: "/tender/:id",
+          path: "/tender/:mdpId",
           element: <TenderEditor />,
         },
         {

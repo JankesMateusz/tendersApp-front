@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 150px;
+    height: 300px;
+    border: 2px rgba(134, 134, 134, 0.185) solid;
+}

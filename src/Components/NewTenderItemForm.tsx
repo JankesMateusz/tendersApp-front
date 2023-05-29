@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import TenderItemM from "../Models/TenderItemModel";
 import itemStore from "../store/TenderItemStore";
 import { observer } from "mobx-react";
+import { Add, Clear, Save } from "@material-ui/icons";
 
 const NewTenderItemForm: React.FC = () => {
   const INITIAL_VALUES: TenderItemM = {
@@ -123,95 +124,182 @@ const NewTenderItemForm: React.FC = () => {
 
   return (
     <div className={classes.container}>
-      <form className={classes.itemForm} onSubmit={handleSubmit}>
-        <label>Category</label>
-        <select
-          name="category"
-          value={category}
-          onChange={handleCategoryChange}
-        >
-          <option></option>
-          <option value={categories.key1}>Notebook</option>
-          <option value={categories.key2}>PC</option>
-          <option value={categories.key3}>Server</option>
-          <option value={categories.key4}>Storage</option>
-          <option value={categories.key5}>Monitor</option>
-          <option value={categories.key6}>Tablet</option>
-          <option value={categories.key7}>AiO</option>
-          <option value={categories.key8}>Printers</option>
-          <option value={categories.key9}>MFP</option>
-          <option value={categories.key10}>MS Office</option>
-          <option value={categories.key11}>Copiers</option>
-          <option value={categories.key12}>Scanner</option>
-          <option value={categories.key13}>Plotter</option>
-          <option value={categories.key14}>PES</option>
-        </select>
-        <label>Quantity</label>
-        <input
-          value={quantity !== 0 ? quantity : ""}
-          type="number"
-          onChange={(event) => setQuantity(event.target.valueAsNumber)}
-          min={0}
-        />
-        <label>CPU Qty</label>
-        <input
-          id="cpuNumber"
-          value={cpuQuantity !== 0 ? cpuQuantity : ""}
-          type="number"
-          onChange={(event) => setCpuQuantity(event.target.valueAsNumber)}
-          min={0}
-        />
-        <label>Architecture</label>
-        <input
-          name="architecture"
-          value={architecture}
-          type="text"
-          onChange={(event) => setArchitecture(event.target.value)}
-        />
-        <label>OS</label>
-        <input
-          name="os"
-          value={os}
-          type="text"
-          onChange={(event) => setOs(event.target.value)}
-        />
-        <label>Office</label>
-        <input
-          name="office"
-          value={office}
-          type="text"
-          onChange={(event) => setOffice(event.target.value)}
-        />
-        <label>Remarks</label>
-        <input
-          name="remarks"
-          value={remarks}
-          type="text"
-          onChange={(event) => setRemarks(event.target.value)}
-        />
-        <label>Task Nr</label>
-        <input
-          name="taskNr"
-          value={taskNumber !== 0 ? taskNumber : ""}
-          type="number"
-          onChange={(event) => setTaskNumber(event.target.valueAsNumber)}
-          min={0}
-        />
-        <label>Purchase Form</label>
-        <input
-          name="purchaseForm"
-          value={purchaseForm}
-          type="text"
-          onChange={(event) => setPurchaseForm(event.target.value)}
-        />
-      </form>
+      <section className={classes.header}>
+        <label>Pre Bid Verification</label>
+        <label>Post Bid Verification</label>
+      </section>
+      <div className={classes.itemForm}>
+        <section className={classes.leftSection}>
+          <div className={classes.labelInputGroup}>
+            <label>Category</label>
+            <select
+              name="category"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option></option>
+              <option value={categories.key1}>Notebook</option>
+              <option value={categories.key2}>PC</option>
+              <option value={categories.key3}>Server</option>
+              <option value={categories.key4}>Storage</option>
+              <option value={categories.key5}>Monitor</option>
+              <option value={categories.key6}>Tablet</option>
+              <option value={categories.key7}>AiO</option>
+              <option value={categories.key8}>Printers</option>
+              <option value={categories.key9}>MFP</option>
+              <option value={categories.key10}>MS Office</option>
+              <option value={categories.key11}>Copiers</option>
+              <option value={categories.key12}>Scanner</option>
+              <option value={categories.key13}>Plotter</option>
+              <option value={categories.key14}>PES</option>
+            </select>
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Quantity</label>
+            <input
+              value={quantity !== 0 ? quantity : ""}
+              type="number"
+              onChange={(event) => setQuantity(event.target.valueAsNumber)}
+              min={0}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>CPU Qty</label>
+            <input
+              id="cpuNumber"
+              value={cpuQuantity !== 0 ? cpuQuantity : ""}
+              type="number"
+              onChange={(event) => setCpuQuantity(event.target.valueAsNumber)}
+              min={0}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Initial Benchmark</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Architecture</label>
+            <input
+              name="architecture"
+              value={architecture}
+              type="text"
+              onChange={(event) => setArchitecture(event.target.value)}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>OS</label>
+            <input
+              name="os"
+              value={os}
+              type="text"
+              onChange={(event) => setOs(event.target.value)}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Office</label>
+            <input
+              name="office"
+              value={office}
+              type="text"
+              onChange={(event) => setOffice(event.target.value)}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Remarks</label>
+            <input
+              name="remarks"
+              value={remarks}
+              type="text"
+              onChange={(event) => setRemarks(event.target.value)}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Task Nr</label>
+            <input
+              name="taskNr"
+              value={taskNumber !== 0 ? taskNumber : ""}
+              type="number"
+              onChange={(event) => setTaskNumber(event.target.valueAsNumber)}
+              min={0}
+            />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>ISO 50001</label>
+            <select>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>TCO</label>
+            <select>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Purchase Form</label>
+            <input
+              name="purchaseForm"
+              value={purchaseForm}
+              type="text"
+              onChange={(event) => setPurchaseForm(event.target.value)}
+            />
+          </div>
+        </section>
+        <section className={classes.rightSection}>
+          <div className={classes.labelInputGroup}>
+            <label>Winner</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Vendor</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Status</label>
+            <select>
+              <option>Pending</option>
+              <option>placeholder</option>
+              <option>placeholder</option>
+              <option>placeholder</option>
+            </select>
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Award Letter Date</label>
+            <input type="date" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Comments Sales Team</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Final OS</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Final Office</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Delivery term</label>
+            <input type="text" />
+          </div>
+          <div className={classes.labelInputGroup}>
+            <label>Benchmark Bid</label>
+            <input type="text" />
+          </div>
+        </section>
+      </div>
       {itemStore.editMode ? (
-        <div>
-          <button onClick={handleItemOverwrite}>Save</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
+        <section className={classes.buttonSection}>
+          <button onClick={handleItemOverwrite}><Save/> Save</button>
+          <button onClick={handleCancel}><Clear/>Cancel</button>
+        </section>
       ) : (
-        <button onClick={handleSubmit}>Add</button>
+        <section className={classes.buttonSection}>
+          <button onClick={handleSubmit}><Add/> Add Item</button>
+        </section>
       )}
     </div>
   );
