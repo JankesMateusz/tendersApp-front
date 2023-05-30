@@ -95,7 +95,7 @@ const TenderEditor: React.FC = () => {
             <ArrowBack className={classes.arrow} />
           </div>
           <button>Save</button>
-          <label>MDP ID HERE?</label>
+          <label className={classes.mdpIdLabel}>MDP ID HERE?</label>
           <button onClick={handleNewTender}>New Tender</button>
           <div className={classes.arrowArea} onClick={handleClickRight}>
             <ArrowForward className={classes.arrow} />

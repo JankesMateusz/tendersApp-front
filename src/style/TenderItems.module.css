@@ -19,13 +19,17 @@
   width: 100%;
 }
 
-.tab th,
-td {
+.tab th{
   border: 1px;
   border-color: #000000e7;
   border-style: solid;
-  padding: 0.5rem;
+  padding: 2px;
   margin: 0;
+}
+
+.tab td{
+  margin: 0;
+  padding: 2px;
 }
 
 .tab tbody,

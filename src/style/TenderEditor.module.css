@@ -13,67 +13,85 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 84vh;
+  height: 86vh;
   padding: 0;
   width: 38%;
-  background-color: #c7c7c7;
+  background-color: #dfdfdf;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.menu{
+.menu {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   gap: 10px;
   margin-bottom: 5px;
+  background-color: #38015c;
+  border-radius: 15px;
+  border: 2px #38015c solid;
+}
+
+.mdpIdLabel {
+  background-color: #dfdfdf;
+  color: #38015c;
+  font-weight: bold;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .menu button {
+  padding: 5px;
   background-color: #38015c;
+  border: 1px #38015c solid;
   border-radius: 3px;
   align-items: center;
   justify-content: center;
   display: flex;
-  color: white;
-  border: none;
+  color: #dfdfdf;
+  height: 100%;
+  width: 90px;
 }
 
-.menu button:hover{
-    cursor: pointer;
-    color: #c291e2;
+.menu button:hover {
+  cursor: pointer;
+  color: #c291e2;
+  border: 1px #c291e2 solid;
 }
 
-.arrow{
+.arrow {
   background-color: #38015c;
+  border: 2px #dfdfdf solid;
   border-radius: 50%;
-  color: white;
+  color: #dfdfdf;
 }
 
-.arrowArea{
+.arrowArea {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  border: 1px #38015c solid;
 }
 
-.arrowArea :hover{
+.arrowArea :hover {
   color: #c291e2;
   border-radius: 50%;
   cursor: pointer;
+  border-color: #c291e2;
 }
 
 .rightSection {
   display: flex;
   flex-direction: column;
-  height: 84vh;
+  height: 86vh;
   align-items: center;
   justify-content: center;
   padding: 0;
   min-width: 61%;
-  background-color: #c7c7c7;
+  background-color: #dfdfdf;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -82,24 +100,26 @@
 .sectionName {
   align-self: baseline;
   font-weight: bold;
-  color: #38015c
+  color: #38015c;
 }
 
-.tenderInfo{
+.tenderInfo {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 50%;
-  
+  border: 1px rgb(172, 172, 172) solid;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.purchaserInfo{
+.purchaserInfo {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 50%;
-  
 }
 
 .purchaser {
@@ -111,9 +131,14 @@
   padding-right: 5px;
 }
 
+/* .purchaser :hover {
+  cursor: pointer;
+  border: 1px #c291e2 solid;
+} */
+
 .person {
   height: 50%;
-  width: 100%; 
+  width: 100%;
   border: 1px rgb(172, 172, 172) solid;
   border-radius: 5px;
   padding-left: 5px;
@@ -121,7 +146,12 @@
   margin-bottom: 5px;
 }
 
-.label{
+/* .person :hover {
+  cursor: pointer;
+  border: 1px #c291e2 solid;
+} */
+
+.label {
   align-self: baseline;
   margin-bottom: 0.5em;
 }
