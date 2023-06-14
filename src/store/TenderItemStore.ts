@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, makeAutoObservable } from "mobx";
 import TenderItemM from "../Models/TenderItemModel";
 
 class TenderItemStore {
@@ -18,10 +18,11 @@ class TenderItemStore {
     taskNumber: 0,
     purchaseForm: "",
   };
+
   editMode: boolean = false;
 
   constructor() {
-    makeObservable(this, {
+    makeAutoObservable(this, {
       items: observable,
       toEdit: observable,
       editMode: observable,
@@ -29,7 +30,7 @@ class TenderItemStore {
       setItemToEdit: action,
       deleteTenderItem: action,
       toggleEditMode: action,
-      overwriteItem: action,
+      overwriteItem: action
     });
   }
 

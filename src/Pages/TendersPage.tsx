@@ -18,7 +18,7 @@ const TendersPage = () => {
   return (
     <div className={classes.container}>
       <section className={classes.header}>
-        <NavLink to="/newTender">
+        <NavLink to="/tender/newTender">
           <button className={classes.newTender}>New Tender</button>
         </NavLink>
         <section className={classes.options}>

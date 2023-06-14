@@ -2,7 +2,6 @@ import React from "react";
 import TenderM from "../Models/TenderModel";
 import Tender from "./Tender";
 import classes from "../style/Tenders.module.css";
-import { NavLink } from "react-router-dom";
 
 const Tenders: React.FC<{ tenderList: TenderM[] }> = (props) => {
   return (

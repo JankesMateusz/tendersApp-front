@@ -2,9 +2,7 @@ import React from "react";
 
 import TenderItems from "../Components/TenderItems";
 import TenderM from "../Models/TenderModel";
-import PurchaserM from "../Models/PurchaserModel";
-import Purchaser from "../Components/Purchaser";
-import PersonOfContactM from "../Models/PersonOfContactModel";
+import PurchaserInfo from "../Components/PurchaserInfo";
 import PersonOfContact from "../Components/PersonOfContact";
 import NewTenderItemForm from "../Components/NewTenderItemForm";
 import classes from "../style/TenderEditor.module.css";
@@ -13,64 +11,51 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../util/useFetch";
 import itemStore from "../store/TenderItemStore";
 import TenderItemM from "../Models/TenderItemModel";
-import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import { observer } from "mobx-react";
+import purchaserInfoStore from "../store/PurchaserInfoStore";
+import tenderInfoStore from "../store/TenderInfoStore";
+import PurchaserM from "../Models/PurchaserModel";
+import Menu from "../Components/Menu";
 
 const TenderEditor: React.FC = () => {
   const url = "http://localhost:8080/tenders/";
   const mdpId = useParams().mdpId;
-  const { data, loading, error } = useFetch(`${url}${mdpId}`);
+  const { data } = useFetch(`${url}${mdpId}`);
   const navigate = useNavigate();
 
-  let initialItems: TenderItemM[] = [];
-
-  if (data !== null) {
-    initialItems = data.tenderItemsDto;
-  }
-  itemStore.setItems(initialItems);
-
-  let poc: PersonOfContactM = {
-    id: 1,
-    firstName: "Zenon",
-    lastName: "Martyniuk",
-    email: "zenon@martyniuk.pl",
-    email2: null,
-    phoneNumber: "123-123-123",
-    fax: null,
-  };
-
-  let purchaser: PurchaserM = {
-    id: 1,
-    officialName:
-      "Główny Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych",
-    city: "Warszawa",
-    address: "Jakaś ulica 1",
-    province: "mazowieckie",
-    zipCode: "01-100",
-  };
-
-  let tender: TenderM = {
-    id: 1,
-    mdpId: "2023001",
-    title:
-      "Dostawa sprzętu teleinformatycznego do Głównego Inspektoratu Jakości Handlowej Artykułów Rolno-Spożywczych",
-    publicationDate: new Date(2023, 1, 10),
-    bidDate: new Date(2023, 1, 28),
-    link: "https://ezamowienia.gov.pl/mo-client-board/bzp/notice-details/id/08db45b2-aba3-f40c-1610-8b0011950a48",
-    bidNumber: "2023/BZP 00192198/01",
-    status: "pending",
-    budget: "powyżej 623504 PLN",
+  let initialTender: TenderM = {
+    id: 0,
+    mdpId: "",
+    title: "",
+    publicationDate: new Date(),
+    bidDate: new Date(),
+    link: "",
+    bidNumber: "",
+    status: "",
+    budget: "",
     comments: "",
   };
 
+  let initialItems: TenderItemM[] = [];
+
+  let initialPurchaser: PurchaserM = {
+    id: 0,
+    officialName: "",
+    address: "",
+    city: "",
+    province: "",
+    zipCode: "",
+    typeOfAccount: "",
+  };
+
   if (data !== null) {
-    poc = data.purchaserDto;
+    initialTender = data.tenderDto;
+    initialItems = data.tenderItemsDto;
+    initialPurchaser = data.purchaserDto;
   }
-  if (data !== null) {
-    purchaser = data.purchaserDto;
-  }
-  if (data !== null) {
-    tender = data.tenderDto;
-  }
+  tenderInfoStore.setTender(initialTender);
+  itemStore.setItems(initialItems);
+  purchaserInfoStore.setPurchaser(initialPurchaser);
 
   const handleClickLeft = () => {
     const result = (parseInt(mdpId ? mdpId : "", 10) - 1).toString();
@@ -84,39 +69,44 @@ const TenderEditor: React.FC = () => {
 
   const handleNewTender = () => {
     navigate(`/tender/newTender`);
+    initialItems = initialItems.splice(0);
+    initialTender = {
+      id: 0,
+      mdpId: "",
+      title: "",
+      publicationDate: new Date(),
+      bidDate: new Date(),
+      link: "",
+      bidNumber: "",
+      status: "",
+      budget: "",
+      comments: "",
+    };
+    purchaserInfoStore.resetToInit();
+    tenderInfoStore.setToInit();
   };
 
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
-        <label className={classes.sectionName}>Tender Information</label>
-        <div className={classes.menu}>
-          <div className={classes.arrowArea} onClick={handleClickLeft}>
-            <ArrowBack className={classes.arrow} />
-          </div>
-          <button>Save</button>
-          <label className={classes.mdpIdLabel}>MDP ID HERE?</label>
-          <button onClick={handleNewTender}>New Tender</button>
-          <div className={classes.arrowArea} onClick={handleClickRight}>
-            <ArrowForward className={classes.arrow} />
-          </div>
-        </div>
+        <h5 className={classes.sectionName}>Tender Information</h5>
+        <Menu handleClickLeft={handleClickLeft} handleClickRight={handleClickRight} handleNewTender={handleNewTender}/>
         <div className={classes.tenderInfo}>
-          <TenderInfo tender={tender} />
+          <TenderInfo />
         </div>
-        <label className={classes.sectionName}>Puchaser Information</label>
+        <h5 className={classes.sectionName}>Purchaser Information</h5>
         <div className={classes.purchaserInfo}>
           <div className={classes.purchaser}>
-            <Purchaser purchaser={purchaser} />
+            <PurchaserInfo />
           </div>
-          <label className={classes.sectionName}>Person In Contact Information</label>
+          <h5 className={classes.sectionName}>Person In Contact Information</h5>
           <div className={classes.person}>
-            <PersonOfContact contact={poc} />
+            <PersonOfContact />
           </div>
         </div>
       </section>
       <section className={classes.rightSection}>
-        <label className={classes.sectionName}>Tender Items</label>
+        <h5 className={classes.sectionName}>Tender Items</h5>
         <NewTenderItemForm />
         <TenderItems />
       </section>
@@ -124,4 +114,4 @@ const TenderEditor: React.FC = () => {
   );
 };
 
-export default TenderEditor;
+export default observer(TenderEditor);

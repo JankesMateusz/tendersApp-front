@@ -125,8 +125,8 @@ const NewTenderItemForm: React.FC = () => {
   return (
     <div className={classes.container}>
       <section className={classes.header}>
-        <label>Pre Bid Verification</label>
-        <label>Post Bid Verification</label>
+        <h4>Pre Bid Verification</h4>
+        <h4>Post Bid Verification</h4>
       </section>
       <div className={classes.itemForm}>
         <section className={classes.leftSection}>

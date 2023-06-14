@@ -1,7 +1,7 @@
 class PersonOfContactM {
     id: number;
-    firstName: string | null;
-    lastName: string | null;
+    personOfContactFirstName: string | null;
+    personOfContactLastName: string | null;
     email: string;
     email2: string | null;
     phoneNumber: string;
@@ -9,8 +9,8 @@ class PersonOfContactM {
 
     constructor(id: number, firstName: string, lastName: string, email: string, email2: string, phoneNumber: string, fax: string) {
         this.id = id,
-        this.firstName = firstName,
-        this.lastName = lastName,
+        this.personOfContactFirstName = firstName,
+        this.personOfContactLastName = lastName,
         this.email = email,
         this.email2 = email2,
         this.phoneNumber = phoneNumber,
