@@ -19,7 +19,7 @@ class PurchaserInfoStore {
       purchaser: observable,
       modalToggled: observable,
       modalToggle: action,
-      resetToInit: action
+      resetToInit: action,
     });
   }
 
@@ -43,6 +43,10 @@ class PurchaserInfoStore {
 
   setPurchaser(purchaser: PurchaserM){
     this.purchaser = purchaser;
+  }
+
+  get getPurchaser(){
+    return this.purchaser;
   }
 }
 

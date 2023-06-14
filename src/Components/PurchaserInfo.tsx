@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "../style/PurchaserInfo.module.css";
 import PurchaserEditModal from "./PurchaserEditModal";
 import { CreateOutlined } from "@material-ui/icons";
@@ -7,6 +7,8 @@ import purchaserInfoStore from "../store/PurchaserInfoStore";
 
 const PurchaserInfo: React.FC = () => {
 
+  const fromStore = purchaserInfoStore.purchaser;
+
   const handleClicked = () => {
     purchaserInfoStore.modalToggle(true);
   };
@@ -14,12 +16,12 @@ const PurchaserInfo: React.FC = () => {
   return (
     <div className={classes.container}>
       <section className={classes.infoSection}>
-        <label>{purchaserInfoStore.purchaser.officialName}</label>
-        <label>{purchaserInfoStore.purchaser.city}</label>
-        <label>{purchaserInfoStore.purchaser.address}</label>
-        <label>{purchaserInfoStore.purchaser.province}</label>
-        <label>{purchaserInfoStore.purchaser.zipCode}</label>
-        <label>{purchaserInfoStore.purchaser.typeOfAccount}</label>
+        <p>{fromStore.officialName}</p>
+        <p>{fromStore.city}</p>
+        <p>{fromStore.address}</p>
+        <p>{fromStore.province}</p>
+        <p>{fromStore.zipCode}</p>
+        <p>{fromStore.typeOfAccount}</p>
       </section>
       <section className={classes.edit}>
         <div onClick={handleClicked} className={classes.editButton}>

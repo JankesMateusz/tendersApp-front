@@ -19,7 +19,7 @@ class TenderInfoStore {
     makeAutoObservable(this, {
       tender: observable,
       setTender: action,
-      setToInit: action
+      resetToInit: action
     });
   }
   setTender(tender: TenderM) {
@@ -30,19 +30,17 @@ class TenderInfoStore {
     return this.tender;
   }
 
-  setToInit() {
-    this.tender = {
-      id: 0,
-      mdpId: "",
-      title: "",
-      publicationDate: new Date(),
-      bidDate: new Date(),
-      link: "",
-      bidNumber: "",
-      status: "",
-      budget: "",
-      comments: "",
-    };
+  resetToInit() {
+    this.tender.id = 0;
+    this.tender.mdpId = "";
+    this.tender.title = "";
+    this.tender.publicationDate = new Date();
+    this.tender.bidDate = new Date();
+    this.tender.link = "";
+    this.tender.bidNumber = "";
+    this.tender.status = "";
+    this.tender.budget = "";
+    this.tender.comments = "";
   }
 }
 

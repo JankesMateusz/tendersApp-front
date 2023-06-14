@@ -48,10 +48,10 @@ const TenderEditor: React.FC = () => {
     typeOfAccount: "",
   };
 
-  if (data !== null) {
+  if (data && mdpId !== 'newTender') {
     initialTender = data.tenderDto;
-    initialItems = data.tenderItemsDto;
     initialPurchaser = data.purchaserDto;
+    initialItems = data.tenderItemsDto;
   }
   tenderInfoStore.setTender(initialTender);
   itemStore.setItems(initialItems);
@@ -70,27 +70,19 @@ const TenderEditor: React.FC = () => {
   const handleNewTender = () => {
     navigate(`/tender/newTender`);
     initialItems = initialItems.splice(0);
-    initialTender = {
-      id: 0,
-      mdpId: "",
-      title: "",
-      publicationDate: new Date(),
-      bidDate: new Date(),
-      link: "",
-      bidNumber: "",
-      status: "",
-      budget: "",
-      comments: "",
-    };
+    tenderInfoStore.resetToInit();
     purchaserInfoStore.resetToInit();
-    tenderInfoStore.setToInit();
   };
 
   return (
     <div className={classes.container}>
       <section className={classes.leftSection}>
         <h5 className={classes.sectionName}>Tender Information</h5>
-        <Menu handleClickLeft={handleClickLeft} handleClickRight={handleClickRight} handleNewTender={handleNewTender}/>
+        <Menu
+          handleClickLeft={handleClickLeft}
+          handleClickRight={handleClickRight}
+          handleNewTender={handleNewTender}
+        />
         <div className={classes.tenderInfo}>
           <TenderInfo />
         </div>
