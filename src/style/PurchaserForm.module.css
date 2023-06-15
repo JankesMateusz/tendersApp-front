@@ -1,0 +1,28 @@
+.purchaser{
+    display: flex;
+    flex-direction: column;
+    border: 1px rgb(172, 172, 172) solid;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 0;
+    margin-left: 2px;
+    height: 100%;
+    width: 25%;
+}
+
+.purchaser button {
+  background-color: #38015c;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  display: flex;
+  color: #dfdfdf;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.purchaser button:hover{
+  cursor: pointer;
+  color: #c291e2;
+}

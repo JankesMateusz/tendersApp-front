@@ -12,7 +12,7 @@ const Tenders: React.FC<{ tenderList: TenderM[] }> = (props) => {
             <th>MDP ID</th>
             <th>Title</th>
             <th>Publication Date</th>
-            <th>Bid Name</th>
+            <th>Bid Date</th>
             <th>Bid Number</th>
             <th>Link</th>
             <th>Status</th>

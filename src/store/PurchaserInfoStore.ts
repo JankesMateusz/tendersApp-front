@@ -1,5 +1,7 @@
 import { action, makeAutoObservable, observable } from "mobx";
 import PurchaserM from "../Models/PurchaserModel";
+import axios from "axios";
+import TenderM from "../Models/TenderModel";
 
 class PurchaserInfoStore {
   purchaser: PurchaserM = {
@@ -13,6 +15,7 @@ class PurchaserInfoStore {
   };
 
   modalToggled: boolean = false;
+  tenders: TenderM[] = [];
 
   constructor() {
     makeAutoObservable(this, {
@@ -20,6 +23,7 @@ class PurchaserInfoStore {
       modalToggled: observable,
       modalToggle: action,
       resetToInit: action,
+      fetchTenders: action
     });
   }
 
@@ -47,6 +51,12 @@ class PurchaserInfoStore {
 
   get getPurchaser(){
     return this.purchaser;
+  }
+
+  fetchTenders(){
+    axios.get(`http://localhost:8080/tenders/forPurchaser/${this.purchaser.id}`).then(response =>{
+      this.tenders = response.data;
+    }).catch(error => console.log(error));
   }
 }
 

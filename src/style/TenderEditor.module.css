@@ -71,11 +71,6 @@
   padding-right: 5px;
 }
 
-/* .purchaser :hover {
-  cursor: pointer;
-  border: 1px #c291e2 solid;
-} */
-
 .person {
   height: 50%;
   width: 100%;
@@ -85,11 +80,6 @@
   padding-right: 5px;
   margin-bottom: 5px;
 }
-
-/* .person :hover {
-  cursor: pointer;
-  border: 1px #c291e2 solid;
-} */
 
 .label {
   align-self: baseline;

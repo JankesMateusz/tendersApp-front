@@ -1,16 +1,16 @@
 import React, { useRef, useState } from "react";
 import classes from "../style/LiveSearch.module.css";
 import { Search } from "@material-ui/icons";
-import useFetch from "../util/useFetch";
 import PurchaserM from "../Models/PurchaserModel";
 import axios from "axios";
 import purchaserInfoStore from "../store/PurchaserInfoStore";
 
 interface Props {
   url: string;
+  searchBy: string;
 }
 
-const LiveSearch: React.FC<Props> = ({ url }) => {
+const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
   const [results, setResults] = useState<PurchaserM[]>([]);
   const [error, setError] = useState<boolean>(false);
 
@@ -24,7 +24,6 @@ const LiveSearch: React.FC<Props> = ({ url }) => {
   };
 
   const handleSearch = async (searchValue: string) => {
-    console.log(searchValue)
     if (searchValue.length >= 3) {
       const response = await fetchData(`${url}${searchValue}`);
       if (response !== null) {
@@ -40,7 +39,7 @@ const LiveSearch: React.FC<Props> = ({ url }) => {
     <div className={classes.search}>
       <div className={classes.searchBar}>
         <input
-          placeholder="type to search..."
+          placeholder={`type to search by ${searchBy}`}
           type="text"
           onChange={(e) => {
             handleSearch(e.target.value);
@@ -60,7 +59,7 @@ const LiveSearch: React.FC<Props> = ({ url }) => {
                       key={r.id}
                       onClick={() => {
                         purchaserInfoStore.setPurchaser(r);
-                        
+                        purchaserInfoStore.fetchTenders();
                         results.splice(0);
                       }}
                     >
