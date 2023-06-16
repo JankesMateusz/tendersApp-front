@@ -6,7 +6,7 @@ const PurchaserModalTenders: React.FC<{tenderList: TenderM[]}> = (props) =>{
     return (
         <div className={classes.tableWrapper}>
             <h5>Tenders for Purchaser:</h5>
-            <table>
+            <table className={classes.tab}>
                 <thead>
                     <tr>
                         <th>MDP ID</th>

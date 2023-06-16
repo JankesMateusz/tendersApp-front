@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px rgb(172, 172, 172) solid;
+  padding: 2px;
+  width: 100%;
+  margin-left: 2px;
+  margin-right: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.container h5 {
+  align-self: baseline;
+  padding: 0;
+  padding-left: 2px;
+  margin: 0;
+  color: rgb(83, 83, 83);
+  margin-bottom: 2px;
+}
+
+.container button {
+  background-color: #38015c;
+  border-radius: 3px;
+  height: 23px;
+  width: 100px;
+  margin-top: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  display: flex;
+  color: #dfdfdf;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.container button:hover {
+  cursor: pointer;
+  color: #c291e2;
+}
+.purchaserInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.labelWrapper {
+  display: flex;
+  border-bottom: 1px rgb(172, 172, 172) solid;
+  height: 25px;
+  gap: 10px;
+}
+
+.labelWrapper label{
+    color: rgb(83, 83, 83);
+    width: 130px;
+}
+
+.labelWrapper span{
+    font-weight: bold;
+    color: #38015c;
+}

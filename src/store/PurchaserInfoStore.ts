@@ -14,12 +14,23 @@ class PurchaserInfoStore {
     typeOfAccount: ""
   };
 
+  purchaserAssign: PurchaserM = {
+    id: 0,
+    officialName: "",
+    address: "",
+    city: "",
+    province: "",
+    zipCode: "",
+    typeOfAccount: ""
+  }
+
   modalToggled: boolean = false;
   tenders: TenderM[] = [];
 
   constructor() {
     makeAutoObservable(this, {
       purchaser: observable,
+      purchaserAssign: observable,
       modalToggled: observable,
       modalToggle: action,
       resetToInit: action,
@@ -49,12 +60,16 @@ class PurchaserInfoStore {
     this.purchaser = purchaser;
   }
 
+  setPurchaserAssign(purchaser: PurchaserM){
+    this.purchaserAssign = purchaser;
+  }
+
   get getPurchaser(){
     return this.purchaser;
   }
 
   fetchTenders(){
-    axios.get(`http://localhost:8080/tenders/forPurchaser/${this.purchaser.id}`).then(response =>{
+    axios.get(`http://localhost:8080/tenders/forPurchaser/${this.purchaserAssign.id}`).then(response =>{
       this.tenders = response.data;
     }).catch(error => console.log(error));
   }

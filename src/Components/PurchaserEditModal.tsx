@@ -5,8 +5,10 @@ import purchaserInfoStore from "../store/PurchaserInfoStore";
 import LiveSearch from "./LiveSearch";
 import PurchaserForm from "./PurchaserForm";
 import PurchaserModalTenders from "./PurchaserModalTenders";
+import PurchaserInfo from "./PurchaserInfo";
+import PurchaserToAssign from "./PurchaserToAssign";
 
-const PurchaserEditModal = () => {
+const PurchaserEditModal: React.FC = () => {
   const url = "http://localhost:8080/purchasers";
   const search = "/search?name=";
 
@@ -31,6 +33,7 @@ const PurchaserEditModal = () => {
         <div className={classes.content}>
           <div className={classes.wrapper}>
             <PurchaserForm url={url} />
+            <PurchaserToAssign/>
           </div>
           {purchaserInfoStore.getPurchaser.id !== 0 && (
             <PurchaserModalTenders tenderList={purchaserInfoStore.tenders} />

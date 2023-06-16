@@ -14,7 +14,7 @@
   position: fixed;
   top: 30vh;
   left: 10%;
-  width: 50%;
+  width: 45%;
   height: 50%;
   z-index: 100;
   overflow: hidden;
@@ -66,4 +66,10 @@
 .content{
   display: flex;
   flex-direction: column;
+  height: 100%;
+  margin-top: 2px;
+}
+
+.wrapper{
+  display: flex;
 }

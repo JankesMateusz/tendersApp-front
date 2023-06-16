@@ -58,7 +58,7 @@ const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
                     <li
                       key={r.id}
                       onClick={() => {
-                        purchaserInfoStore.setPurchaser(r);
+                        purchaserInfoStore.setPurchaserAssign(r);
                         purchaserInfoStore.fetchTenders();
                         results.splice(0);
                       }}

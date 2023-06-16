@@ -3,12 +3,14 @@ import purchaserInfoStore from "../store/PurchaserInfoStore";
 import classes from "../style/PurchaserForm.module.css";
 import { Add } from "@material-ui/icons";
 import axios from "axios";
+import PurchaserM from "../Models/PurchaserModel";
+import { observer } from "mobx-react";
 
 interface FormProps {
-    url: string
+  url: string;
 }
 
-const PurchaserForm: React.FC<FormProps> = ({url}) => {
+const PurchaserForm: React.FC<FormProps> = ({ url }) => {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -19,6 +21,15 @@ const PurchaserForm: React.FC<FormProps> = ({url}) => {
   const [error, setError] = useState<boolean>(false);
 
   const handlePost = async () => {
+    let toAssign: PurchaserM = {
+      id: 0,
+      officialName: "",
+      address: "",
+      city: "",
+      province: "",
+      zipCode: "",
+      typeOfAccount: ""
+    };
     try {
       const response = await axios.post(url, {
         officialName: name,
@@ -29,76 +40,83 @@ const PurchaserForm: React.FC<FormProps> = ({url}) => {
         typeOfAccount: typeOfAccount,
       });
       setData(response.data);
-      console.log(response);
+      toAssign = response.data;
     } catch (error) {
       setError(true);
     }
-
-    // purchaserInfoStore.purchaser.officialName = name;
-    // purchaserInfoStore.purchaser.city = city;
-    // purchaserInfoStore.purchaser.address = address;
-    // purchaserInfoStore.purchaser.province = province;
-    // purchaserInfoStore.purchaser.zipCode = zipCode;
-    // purchaserInfoStore.purchaser.typeOfAccount = typeOfAccount;
+    purchaserInfoStore.setPurchaserAssign(toAssign);
+    
+    resetValues();
   };
+
+  const resetValues = () =>{
+    setName("");
+    setCity("");
+    setAddress("");
+    setProvince("");
+    setZipCode("");
+    setTypeOfAccount("");
+  }
 
   return (
     <div className={classes.purchaser}>
-      <input
-        type="text"
-        value={name}
-        placeholder="official name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        value={city}
-        placeholder="city"
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <input
-        type="text"
-        value={address}
-        placeholder="address"
-        onChange={(e) => setAddress(e.target.value)}
-      />
-      <select onChange={(e) => setProvince(e.target.value)}>
-        <option disabled selected>
-          province
-        </option>
-        <option>dolnośląskie</option>
-        <option>kujawsko-pomorskie</option>
-        <option>lubelskie</option>
-        <option>lubuskie</option>
-        <option>łódzkie</option>
-        <option>małopolskie</option>
-        <option>mazowieckie</option>
-        <option>opolskie</option>
-        <option>podkarpackie</option>
-        <option>podlaskie</option>
-        <option>pomorskie</option>
-        <option>śląskie</option>
-        <option>świętokrzyskie</option>
-        <option>warmińsko-mazurskie</option>
-        <option>wielkopolskie</option>
-        <option>zachodniopomorskie</option>
-      </select>
-      <input
-        type="text"
-        value={zipCode}
-        placeholder="zip code"
-        onChange={(e) => setZipCode(e.target.value)}
-      />
-      <input
-        type="text"
-        value={typeOfAccount}
-        placeholder="Type Of Account"
-        onChange={(e) => setTypeOfAccount(e.target.value)}
-      />
+      <div className={classes.form}>
+        <input
+          type="text"
+          value={name}
+          placeholder="official name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={city}
+          placeholder="city"
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <input
+          type="text"
+          value={address}
+          placeholder="address"
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <select onChange={(e) => setProvince(e.target.value)}>
+          <option disabled selected>
+            province
+          </option>
+          <option>dolnośląskie</option>
+          <option>kujawsko-pomorskie</option>
+          <option>lubelskie</option>
+          <option>lubuskie</option>
+          <option>łódzkie</option>
+          <option>małopolskie</option>
+          <option>mazowieckie</option>
+          <option>opolskie</option>
+          <option>podkarpackie</option>
+          <option>podlaskie</option>
+          <option>pomorskie</option>
+          <option>śląskie</option>
+          <option>świętokrzyskie</option>
+          <option>warmińsko-mazurskie</option>
+          <option>wielkopolskie</option>
+          <option>zachodniopomorskie</option>
+        </select>
+        <input
+          type="text"
+          value={zipCode}
+          placeholder="zip code"
+          onChange={(e) => setZipCode(e.target.value)}
+        />
+        <input
+          type="text"
+          value={typeOfAccount}
+          placeholder="Type Of Account"
+          onChange={(e) => setTypeOfAccount(e.target.value)}
+        />
+      </div>
       <button onClick={handlePost}>
         <Add /> Add New
       </button>
     </div>
   );
 };
-export default PurchaserForm;
+export default observer(PurchaserForm);
