@@ -1,6 +1,5 @@
 import React from "react";
 import TenderItemM from "../Models/TenderItemModel";
-import classes from "../TenderItems.module.css"
 
 interface TenderItemProps {
   item: TenderItemM,

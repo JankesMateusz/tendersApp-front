@@ -1,5 +1,6 @@
-import { makeObservable, observable, action, makeAutoObservable } from "mobx";
+import { observable, action, makeAutoObservable } from "mobx";
 import TenderItemM from "../Models/TenderItemModel";
+import TenderItemRequest from "../Models/TenderItemRequest";
 
 class TenderItemStore {
   //handles adding new item form and items list
@@ -19,6 +20,8 @@ class TenderItemStore {
     purchaseForm: "",
   };
 
+  toSend: TenderItemRequest[] = [];
+
   editMode: boolean = false;
 
   constructor() {
@@ -26,11 +29,13 @@ class TenderItemStore {
       items: observable,
       toEdit: observable,
       editMode: observable,
+      toSend: observable,
       addTenderItem: action,
       setItemToEdit: action,
       deleteTenderItem: action,
       toggleEditMode: action,
-      overwriteItem: action
+      overwriteItem: action,
+      setToSend: action,
     });
   }
 
@@ -73,6 +78,24 @@ class TenderItemStore {
     return;
   }
 
+  setToSend() {
+    this.items.map((item) => {
+      this.toSend.push(
+        new TenderItemRequest(
+          item.category,
+          item.quantity,
+          item.cpuQuantity,
+          item.architecture,
+          item.os,
+          item.office,
+          item.remarks,
+          item.taskNumber,
+          item.purchaseForm
+        )
+      );
+    });
+  }
+
   get getItemToEdit() {
     return this.toEdit;
   }
@@ -85,8 +108,9 @@ class TenderItemStore {
     return this.editMode;
   }
 
-  setItems(items:TenderItemM[]){
+  setItems(items: TenderItemM[]) {
     this.items = items;
+    console.log(items);
   }
 }
 

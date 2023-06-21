@@ -1,7 +1,5 @@
-import {v4} from "uuid";
 
-class TenderItemM {
-  id: string;
+class TenderItemRequest {
   category: string;
   quantity: number;
   cpuQuantity: number;
@@ -22,7 +20,6 @@ class TenderItemM {
     taskNumber: number,
     purchaseForm: string,
   ) {
-    this.id = v4();
     this.category = category;
     this.quantity = quantity;
     this.cpuQuantity = cpuQuantity;
@@ -35,4 +32,4 @@ class TenderItemM {
   }
 }
 
-export default TenderItemM;
+export default TenderItemRequest;

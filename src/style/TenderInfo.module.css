@@ -7,6 +7,11 @@
 
 }
 
+.container h4, h5{
+    margin: 0;
+    padding: 10px;
+}
+
 .title{
     margin-bottom: 2px;
     width: 100%;
@@ -24,7 +29,10 @@
 }
 
 .datePicker{
+    display: flex;
+    align-items: center;
     margin-bottom: 2px;
+    gap: 10px;
 }
 
 .budget{

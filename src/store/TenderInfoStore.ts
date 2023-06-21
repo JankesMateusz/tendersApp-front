@@ -1,13 +1,14 @@
 import TenderM from "../Models/TenderModel";
 import { action, makeAutoObservable, observable } from "mobx";
+import moment from "moment";
 
 class TenderInfoStore {
   tender: TenderM = {
     id: 0,
     mdpId: "",
     title: "",
-    publicationDate: new Date(),
-    bidDate: new Date(),
+    publicationDate: moment(new Date()).format("YYYY-MM-DD"),
+    bidDate: moment(new Date()).format("YYYY-MM-DD"),
     link: "",
     bidNumber: "",
     status: "",
@@ -22,6 +23,7 @@ class TenderInfoStore {
       resetToInit: action
     });
   }
+  
   setTender(tender: TenderM) {
     this.tender = tender;
   }
@@ -34,8 +36,8 @@ class TenderInfoStore {
     this.tender.id = 0;
     this.tender.mdpId = "";
     this.tender.title = "";
-    this.tender.publicationDate = new Date();
-    this.tender.bidDate = new Date();
+    this.tender.publicationDate = moment(new Date()).format("YYYY-MM-DD");
+    this.tender.bidDate = moment(new Date()).format("YYYY-MM-DD");
     this.tender.link = "";
     this.tender.bidNumber = "";
     this.tender.status = "";

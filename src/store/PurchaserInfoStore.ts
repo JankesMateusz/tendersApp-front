@@ -58,6 +58,7 @@ class PurchaserInfoStore {
 
   setPurchaser(purchaser: PurchaserM){
     this.purchaser = purchaser;
+    this.purchaserAssign = purchaser;
   }
 
   setPurchaserAssign(purchaser: PurchaserM){

@@ -17,7 +17,6 @@ const PurchaserForm: React.FC<FormProps> = ({ url }) => {
   const [province, setProvince] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [typeOfAccount, setTypeOfAccount] = useState("");
-  const [data, setData] = useState<any>(null);
   const [error, setError] = useState<boolean>(false);
 
   const handlePost = async () => {
@@ -39,7 +38,6 @@ const PurchaserForm: React.FC<FormProps> = ({ url }) => {
         zipCode: zipCode,
         typeOfAccount: typeOfAccount,
       });
-      setData(response.data);
       toAssign = response.data;
     } catch (error) {
       setError(true);
