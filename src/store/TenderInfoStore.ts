@@ -9,7 +9,7 @@ class TenderInfoStore {
     title: "",
     publicationDate: moment(new Date()).format("YYYY-MM-DD"),
     bidDate: moment(new Date()).format("YYYY-MM-DD"),
-    link: "",
+    siwzLink: "",
     bidNumber: "",
     status: "",
     budget: "",
@@ -38,7 +38,7 @@ class TenderInfoStore {
     this.tender.title = "";
     this.tender.publicationDate = moment(new Date()).format("YYYY-MM-DD");
     this.tender.bidDate = moment(new Date()).format("YYYY-MM-DD");
-    this.tender.link = "";
+    this.tender.siwzLink = "";
     this.tender.bidNumber = "";
     this.tender.status = "";
     this.tender.budget = "";

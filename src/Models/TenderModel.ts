@@ -4,7 +4,7 @@ class TenderM {
   title: string;
   publicationDate: Date | string;
   bidDate: Date | string;
-  link: string;
+  siwzLink: string;
   bidNumber: string;
   status: string;
   budget: string;
@@ -16,7 +16,7 @@ class TenderM {
     title: string,
     publicationDate: Date | string,
     bidDate: Date | string,
-    link: string,
+    siwzLink: string,
     bidNumber: string,
     status: string,
     budget: string,
@@ -27,7 +27,7 @@ class TenderM {
     this.title = title;
     this.publicationDate = publicationDate;
     this.bidDate = bidDate;
-    this.link = link;
+    this.siwzLink = siwzLink;
     this.bidNumber = bidNumber;
     this.status = status;
     this.budget = budget;

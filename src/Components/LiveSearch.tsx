@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import classes from "../style/LiveSearch.module.css";
 import { Search } from "@material-ui/icons";
 import PurchaserM from "../Models/PurchaserModel";
 import axios from "axios";
 import purchaserInfoStore from "../store/PurchaserInfoStore";
+import { observer } from "mobx-react";
 
 interface Props {
   url: string;
@@ -59,8 +60,8 @@ const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
                       key={r.id}
                       onClick={() => {
                         purchaserInfoStore.setPurchaserAssign(r);
-                        purchaserInfoStore.fetchTenders();
-                        results.splice(0);
+                        purchaserInfoStore.fetchTenders(); 
+                        setResults([]);
                       }}
                     >
                       {r.officialName}
@@ -75,4 +76,4 @@ const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
   );
 };
 
-export default LiveSearch;
+export default observer(LiveSearch);

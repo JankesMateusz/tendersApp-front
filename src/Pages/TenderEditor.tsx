@@ -10,11 +10,9 @@ import TenderInfo from "../Components/TenderInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../util/useFetch";
 import itemStore from "../store/TenderItemStore";
-import TenderItemM from "../Models/TenderItemModel";
 import { observer } from "mobx-react";
 import purchaserInfoStore from "../store/PurchaserInfoStore";
 import tenderInfoStore from "../store/TenderInfoStore";
-import PurchaserM from "../Models/PurchaserModel";
 import Menu from "../Components/Menu";
 import axios from "axios";
 
@@ -24,40 +22,11 @@ const TenderEditor: React.FC = () => {
   const { data } = useFetch(`${url}/${mdpId}`);
   const navigate = useNavigate();
 
-  let initialTender: TenderM = {
-    id: 0,
-    mdpId: "",
-    title: "",
-    publicationDate: new Date(),
-    bidDate: new Date(),
-    link: "",
-    bidNumber: "",
-    status: "",
-    budget: "",
-    comments: "",
-  };
-
-  let initialItems: TenderItemM[] = [];
-
-  let initialPurchaser: PurchaserM = {
-    id: 0,
-    officialName: "",
-    address: "",
-    city: "",
-    province: "",
-    zipCode: "",
-    typeOfAccount: "",
-  };
-
-  if (data && mdpId !== 'newTender') {
-    initialTender = data.tenderDto;
-    initialPurchaser = data.purchaserDto;
-    initialItems = data.tenderItemsDto;
+  if (data && mdpId !== "newTender") {
+    tenderInfoStore.setTender(data.tenderDto);
+    itemStore.setItems(data.tenderItemsDto);
+    purchaserInfoStore.setPurchaser(data.purchaserDto);
   }
-
-  tenderInfoStore.setTender(initialTender);
-  itemStore.setItems(initialItems);
-  purchaserInfoStore.setPurchaser(initialPurchaser);
 
   const handleClickLeft = () => {
     const result = (parseInt(mdpId ? mdpId : "", 10) - 1).toString();
@@ -71,14 +40,10 @@ const TenderEditor: React.FC = () => {
 
   const handleNewTender = () => {
     navigate(`/tender/newTender`);
-    initialItems = initialItems.splice(0);
+    itemStore.items.splice(0);
     tenderInfoStore.resetToInit();
     purchaserInfoStore.resetToInit();
   };
-
-  const refreshPage = () => {
-    window.location.reload();
-  }
 
   const handleSaveTender = async () => {
     let responseData: TenderM = {
@@ -87,42 +52,42 @@ const TenderEditor: React.FC = () => {
       title: "",
       publicationDate: "",
       bidDate: "",
-      link: "",
+      siwzLink: "",
       bidNumber: "",
       status: "",
       budget: "",
       comments: "",
     };
 
-    try{
+    try {
       itemStore.setToSend();
-      const response = await axios.post(url,{
-        tenderDto:{
+      const response = await axios.post(url, {
+        tenderDto: {
           title: tenderInfoStore.getTender.title,
           mdpId: tenderInfoStore.getTender.mdpId,
           publicationDate: tenderInfoStore.getTender.publicationDate,
           bidDate: tenderInfoStore.getTender.bidDate,
-          link: tenderInfoStore.getTender.link,
+          siwzLink: tenderInfoStore.getTender.siwzLink,
           bidNumber: tenderInfoStore.getTender.bidNumber,
           status: tenderInfoStore.getTender.status,
-          reportDate: "2023-01-01",
+          reportDate: tenderInfoStore.getTender.publicationDate,
           budget: tenderInfoStore.getTender.budget,
           comments: tenderInfoStore.getTender.comments,
         },
-        tenderItems:itemStore.toSend,
-        purchaserId:purchaserInfoStore.getPurchaser.id
+        tenderItems: itemStore.toSend,
+        purchaserId: purchaserInfoStore.getPurchaser.id,
       });
       responseData = response.data;
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
-    initialItems = initialItems.splice(0);
+    itemStore.items.splice(0);
+    itemStore.toSend.splice(0);
     tenderInfoStore.resetToInit();
     purchaserInfoStore.resetToInit();
-
-    navigate(`/tender/${responseData.mdpId}`)
-    refreshPage();
-  }
+    
+    navigate(`/tender/${responseData.mdpId}`);
+  };
 
   return (
     <div className={classes.container}>

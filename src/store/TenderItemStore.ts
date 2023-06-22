@@ -79,7 +79,7 @@ class TenderItemStore {
   }
 
   setToSend() {
-    this.items.map((item) => {
+    this.items.forEach((item) => {
       this.toSend.push(
         new TenderItemRequest(
           item.category,
@@ -110,7 +110,6 @@ class TenderItemStore {
 
   setItems(items: TenderItemM[]) {
     this.items = items;
-    console.log(items);
   }
 }
 

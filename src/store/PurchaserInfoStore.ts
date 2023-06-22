@@ -32,9 +32,12 @@ class PurchaserInfoStore {
       purchaser: observable,
       purchaserAssign: observable,
       modalToggled: observable,
+      tenders: observable,
       modalToggle: action,
       resetToInit: action,
-      fetchTenders: action
+      fetchTenders: action,
+      setPurchaser: action,
+      setPurchaserAssign: action
     });
   }
 

@@ -2,6 +2,7 @@ import React from "react";
 import classes from "../style/Menu.module.css";
 import { ArrowBack, ArrowForward, SaveOutlined } from "@material-ui/icons";
 import tenderInfoStore from "../store/TenderInfoStore";
+import { observer } from "mobx-react";
 
 interface MenuProps {
   handleClickLeft: () => void;
@@ -27,4 +28,4 @@ const Menu: React.FC<MenuProps> = ({handleClickLeft, handleClickRight, handleNew
   );
 };
 
-export default Menu;
+export default observer(Menu);

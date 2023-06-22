@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import tenderInfoStore from "../store/TenderInfoStore";
 import classes from "../style/TenderInfo.module.css";
 import { observer } from "mobx-react";
@@ -9,10 +9,6 @@ const TenderInfo: React.FC = () => {
     [key: string]: T;
   };
 
-  const [publicationDate, setPublicationDate] = useState(
-    tenderInfoStore.getTender.publicationDate.toLocaleString()
-  );
-
   const budgets: Dictionary<string> = {
     key1: "LESS_THAN_130000_PLN",
     key2: "LESS_THAN_623504_PLN",
@@ -21,7 +17,7 @@ const TenderInfo: React.FC = () => {
     key5: "MORE_THAN_957524_PLN",
     key6: "NO_DATA",
   };
-
+ 
   const handleBudgetChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     tenderInfoStore.tender.budget = event.target.value;
   };
@@ -30,6 +26,7 @@ const TenderInfo: React.FC = () => {
     <div className={classes.container}>
       <input
         type="text"
+        placeholder="Bid Number..."
         value={tenderInfoStore.getTender.bidNumber}
         className={classes.input}
         onChange={(e) => (tenderInfoStore.tender.bidNumber = e.target.value)}
@@ -47,10 +44,8 @@ const TenderInfo: React.FC = () => {
         </span>
         <input
           type="date"
-          defaultValue={publicationDate}
           onChange={(e) => {
             tenderInfoStore.tender.publicationDate = e.target.value;
-            setPublicationDate(e.target.value);
           }}
         />
       </div>
@@ -65,11 +60,27 @@ const TenderInfo: React.FC = () => {
           onChange={(e) => (tenderInfoStore.tender.bidDate = e.target.value)}
         />
       </div>
+      <div className={classes.datePicker}>
+        <p>Report Date: </p>
+        <span>{tenderInfoStore.tender.bidDate.toLocaleString()}</span>
+        <input
+          type="date"
+          defaultValue={moment(
+            tenderInfoStore.getTender.publicationDate
+          ).format("YYYY-MM-DD")}
+          onChange={(e) => (tenderInfoStore.tender.bidDate = e.target.value)}
+        />
+      </div>
+      <select>
+        <option>yes</option>
+        <option>no</option>
+      </select>
       <input
         type="text"
-        value={tenderInfoStore.tender.link}
+        placeholder=""
+        value={tenderInfoStore.tender.siwzLink}
         className={classes.input}
-        onChange={(e) => (tenderInfoStore.tender.link = e.target.value)}
+        onChange={(e) => (tenderInfoStore.tender.siwzLink = e.target.value)}
       />
       <input
         type="text"
@@ -90,12 +101,21 @@ const TenderInfo: React.FC = () => {
         <option value={budgets.key5}>powyżej 957524 pln</option>
         <option value={budgets.key6}>brak danych</option>
       </select>
+      <input type="text" placeholder="Link 1..." />
+      <input type="text" placeholder="Link 2..." />
+      <input type="text" placeholder="Link 3..." />
       <input
         type="text"
         value={tenderInfoStore.tender.comments}
         className={classes.input}
         onChange={(e) => (tenderInfoStore.tender.comments = e.target.value)}
       />
+      <select>
+        <option>eduk12</option>
+        <option>higher education</option>
+        <option>defence</option>
+        <option>local govt</option>
+      </select>
     </div>
   );
 };

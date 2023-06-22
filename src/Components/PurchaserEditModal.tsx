@@ -35,7 +35,7 @@ const PurchaserEditModal: React.FC = () => {
             <PurchaserForm url={url} />
             <PurchaserToAssign/>
           </div>
-          {purchaserInfoStore.getPurchaser.id !== 0 && (
+          {purchaserInfoStore.getPurchaser.id !== 0 && purchaserInfoStore.tenders.length !== 0 && (
             <PurchaserModalTenders tenderList={purchaserInfoStore.tenders} />
           )}
         </div>
