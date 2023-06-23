@@ -10,7 +10,8 @@ import PurchaserToAssign from "./PurchaserToAssign";
 
 const PurchaserEditModal: React.FC = () => {
   const url = "http://localhost:8080/purchasers";
-  const search = "/search?name=";
+  const searchName = "/searchName?name=";
+  const searchCity = "/searchCity?city="
 
   const handleExit = () => {
     purchaserInfoStore.modalToggle(false);
@@ -27,8 +28,8 @@ const PurchaserEditModal: React.FC = () => {
           </div>
         </div>
         <div className={classes.searchArea}>
-          <LiveSearch url={url + search} searchBy="name" />
-          <LiveSearch url={url + search} searchBy="city" />
+          <LiveSearch url={url + searchName} searchBy="name" />
+          <LiveSearch url={url + searchCity} searchBy="city" />
         </div>
         <div className={classes.content}>
           <div className={classes.wrapper}>

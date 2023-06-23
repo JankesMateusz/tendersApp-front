@@ -1,10 +1,15 @@
 import React from "react";
 import classes from "../style/TenderPageOptions.module.css";
 import { Search } from "@material-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 const TenderPageOptions = () => {
+  
+  const navigate = useNavigate();
+
   return (
     <div className={classes.container}>
+      <button onClick={()=>navigate("/tenders/newTender")}>New Tender</button>
       <div className={classes.searchSection}>
         <select>
           <option>Title</option>
@@ -16,7 +21,7 @@ const TenderPageOptions = () => {
           <Search style={{backgroundColor: "white", color: "grey", fontSize: "16px"}}/>
         </div>
       </div>
-      <div className={classes.datePicker}>
+      <div className={classes.dates}>
         <input type="date" />
         <input type="date" />
       </div>

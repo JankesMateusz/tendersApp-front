@@ -1,9 +1,7 @@
 import Layout from "./Layout/Layout";
-import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Routes } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TenderEditor from "./Pages/TenderEditor";
 import TendersPage from "./Pages/TendersPage"
-import path from "path";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,7 +11,7 @@ function App() {
       children: [
         { path: "/tenders", element: <TendersPage /> },
         {
-          path: "/tender/:mdpId",
+          path: "/tenders/:mdpId",
           element: <TenderEditor />,
         },
         {

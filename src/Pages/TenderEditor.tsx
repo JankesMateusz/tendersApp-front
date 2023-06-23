@@ -30,16 +30,16 @@ const TenderEditor: React.FC = () => {
 
   const handleClickLeft = () => {
     const result = (parseInt(mdpId ? mdpId : "", 10) - 1).toString();
-    navigate(`/tender/${result}`);
+    navigate(`/tenders/${result}`);
   };
 
   const handleClickRight = () => {
     const result = (parseInt(mdpId ? mdpId : "", 10) + 1).toString();
-    navigate(`/tender/${result}`);
+    navigate(`/tenders/${result}`);
   };
 
   const handleNewTender = () => {
-    navigate(`/tender/newTender`);
+    navigate(`/tenders/newTender`);
     itemStore.items.splice(0);
     tenderInfoStore.resetToInit();
     purchaserInfoStore.resetToInit();
@@ -86,7 +86,7 @@ const TenderEditor: React.FC = () => {
     tenderInfoStore.resetToInit();
     purchaserInfoStore.resetToInit();
     
-    navigate(`/tender/${responseData.mdpId}`);
+    navigate(`/tenders/${responseData.mdpId}`);
   };
 
   return (

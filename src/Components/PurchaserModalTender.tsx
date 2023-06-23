@@ -7,7 +7,7 @@ const PurchaserModalTender: React.FC<{ tender: TenderM }> = (props) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/tender/${props.tender.mdpId}`)
+    navigate(`/tenders/${props.tender.mdpId}`)
   }
 
   return (

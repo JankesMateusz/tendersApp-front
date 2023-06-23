@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "../style/LiveSearch.module.css";
 import { Search } from "@material-ui/icons";
 import PurchaserM from "../Models/PurchaserModel";
@@ -14,6 +14,8 @@ interface Props {
 const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
   const [results, setResults] = useState<PurchaserM[]>([]);
   const [error, setError] = useState<boolean>(false);
+
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const fetchData = async (url: string) => {
     try {
@@ -36,12 +38,18 @@ const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
     }
   };
 
+  const clearInput = () =>{
+    if(inputRef.current) inputRef.current.value = "";
+  }
+
   return (
     <div className={classes.search}>
       <div className={classes.searchBar}>
         <input
+          id="search"
           placeholder={`type to search by ${searchBy}`}
           type="text"
+          ref={inputRef}
           onChange={(e) => {
             handleSearch(e.target.value);
           }}
@@ -60,11 +68,12 @@ const LiveSearch: React.FC<Props> = ({ url, searchBy }) => {
                       key={r.id}
                       onClick={() => {
                         purchaserInfoStore.setPurchaserAssign(r);
-                        purchaserInfoStore.fetchTenders(); 
+                        purchaserInfoStore.fetchTenders();
                         setResults([]);
+                        clearInput();
                       }}
                     >
-                      {r.officialName}
+                      {r.officialName}, {r.city}
                     </li>
                   );
                 })
